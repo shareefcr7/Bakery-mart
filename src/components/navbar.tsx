@@ -90,15 +90,15 @@ export function Navbar() {
             style={{ backgroundColor: "#1A120B", opacity: 1 }}
         >
             {/* Header Row */}
-            <div className="flex items-center justify-between py-4 pr-4 pl-2 border-b border-[#C19D6C]/20 bg-[#1A120B]">
+            <div className="flex items-center justify-between py-4 pr-4 pl-0 border-b border-[#C19D6C]/20 bg-[#1A120B]">
                  {/* Left: Logo */}
                  <Link href="/" onClick={() => setIsOpen(false)} className="transition-opacity hover:opacity-80">
                     <Image 
                         src="/logo.png" 
                         alt="Bakery Mart" 
                         width={200} 
-                        height={60} 
-                        className="w-[180px] h-auto object-contain object-left"
+                        height={50} 
+                        className="h-[50px] w-auto object-contain object-left"
                     />
                  </Link>
 
