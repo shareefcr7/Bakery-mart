@@ -11,8 +11,8 @@ export function Hero() {
       {/* Background Image with Parallax-like feel */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/hero-bg.png"
-          alt="Premium Chocolate Cake"
+          src="/hero-bg-red.png"
+          alt="Premium Red Velvet Cake"
           fill
           className="object-cover scale-105"
           priority
