@@ -7,13 +7,13 @@
     --foreground: 74 59 50;
     /* #4A3B32 Deep Coffee */
 
-    --primary: 193 157 108;
-    /* #C19D6C Classic Gold/Brown */
-    --primary-foreground: 255 255 255;
+    --primary: 350 80% 45%;
+    /* Red */
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 250 247 242;
-    /* #FAF7F2 Warm Cream (Old BG) */
-    --secondary-foreground: 74 59 50;
+    --secondary: 0 0% 98%;
+    /* Almost White */
+    --secondary-foreground: 350 80% 45%;
 
     --muted: 242 232 224;
     --muted-foreground: 120 100 90;
