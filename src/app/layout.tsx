@@ -25,8 +25,7 @@ export default function RootLayout({
       <body className={`${outfit.variable} font-sans antialiased bg-background text-foreground transition-colors duration-300`}>
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
-          enableSystem
+          forcedTheme="light"
           disableTransitionOnChange
         >
           <WishlistProvider>

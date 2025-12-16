@@ -5,7 +5,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { usePathname } from "next/navigation"
 import { Menu, X, Search, Heart } from "lucide-react"
-import { ThemeToggle } from "./theme-toggle"
+
 import { cn } from "@/lib/utils"
 import { motion, AnimatePresence } from "framer-motion"
 import { useWishlist } from "@/context/wishlist-context"
@@ -70,7 +70,7 @@ export function Navbar() {
             )}
           </Link>
           
-          <ThemeToggle />
+
 
           {/* Mobile Menu Trigger */}
           <button
