@@ -84,7 +84,9 @@ export function Navbar() {
             {/* Header Row */}
             <div className="flex items-center justify-between p-4 border-b border-[#C19D6C]/20 bg-[#1A120B]">
                  {/* Left: Logo */}
-                 <span className="font-serif italic text-xl font-bold text-white">Bakery Mart</span>
+                 <Link href="/" onClick={() => setIsOpen(false)} className="font-serif italic text-xl font-bold text-white transition-colors hover:text-[#C19D6C]">
+                    Bakery Mart
+                 </Link>
 
                  {/* Right: Close Button */}
                  <button 
