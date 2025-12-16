@@ -116,7 +116,7 @@ export function Navbar() {
 
               {/* Pink CTA */}
               <div className="mt-4 pt-4 w-full border-t border-[#C19D6C]/10">
-                <Link href="/contact" onClick={() => setIsOpen(false)} className="text-[#ea4c89] font-bold text-lg hover:text-[#ea4c89]/80 transition-colors flex items-center gap-2">
+                <Link href="/contact" onClick={() => setIsOpen(false)} className="text-[#ea4c89] font-bold text-lg hover:text-white transition-colors flex items-center gap-2">
                     Start Custom Order
                     <span className="text-sm">→</span>
                 </Link>
