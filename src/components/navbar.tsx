@@ -3,14 +3,18 @@
 import * as React from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { Menu, X, Search } from "lucide-react"
+import { Menu, X, Search, Heart } from "lucide-react"
 import { ThemeToggle } from "./theme-toggle"
 import { cn } from "@/lib/utils"
 import { motion, AnimatePresence } from "framer-motion"
+import { useWishlist } from "@/context/wishlist-context"
 
 export function Navbar() {
   const [isOpen, setIsOpen] = React.useState(false)
   const pathname = usePathname()
+  const { items } = useWishlist()
+  
+  const wishlistCount = items.length
 
   const links = [
     { href: "/", label: "Home" },
@@ -45,9 +49,18 @@ export function Navbar() {
         <div className="flex items-center gap-4">
            {/* Simple Search Trigger (Visual Only for now) */}
           
-          <button className="text-muted-foreground hover:text-primary">
+          <Link href="/products" className="text-muted-foreground hover:text-primary" aria-label="Search Products">
             <Search className="w-5 h-5" />
-          </button>
+          </Link>
+
+          <Link href="/wishlist" className="relative text-muted-foreground hover:text-primary transition-colors">
+            <Heart className="w-5 h-5" />
+            {wishlistCount > 0 && (
+                <span className="absolute -top-2 -right-2 bg-primary text-primary-foreground text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold animate-in zoom-in">
+                    {wishlistCount}
+                </span>
+            )}
+          </Link>
           
           <ThemeToggle />
 
@@ -65,25 +78,41 @@ export function Navbar() {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden border-t border-border"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 top-16 z-40 bg-background/95 backdrop-blur-xl md:hidden overflow-y-auto"
           >
-            <div className="flex flex-col p-4 gap-4 bg-background">
-              {links.map((link) => (
-                <Link
+            <div className="flex flex-col items-center justify-center min-h-[60vh] gap-8 p-8">
+              {links.map((link, i) => (
+                <motion.div
                   key={link.href}
-                  href={link.href}
-                  onClick={() => setIsOpen(false)}
-                  className={cn(
-                    "text-lg font-medium transition-colors hover:text-primary",
-                    pathname === link.href ? "text-primary" : "text-muted-foreground"
-                  )}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: i * 0.1 }}
                 >
-                  {link.label}
-                </Link>
+                    <Link
+                      href={link.href}
+                      onClick={() => setIsOpen(false)}
+                      className={cn(
+                        "text-3xl font-bold tracking-tight transition-colors hovered-text-effect",
+                        pathname === link.href ? "text-primary" : "text-foreground hover:text-primary"
+                      )}
+                    >
+                      {link.label}
+                    </Link>
+                </motion.div>
               ))}
+              
+              <motion.div 
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.3 }}
+                className="mt-8 flex gap-6"
+              >
+                  {/* Additional Mobile-Only Actions could go here */}
+              </motion.div>
             </div>
           </motion.div>
         )}

@@ -28,18 +28,18 @@ function ProductContent() {
     <div className="container mx-auto px-4 pb-20">
         <div className="flex flex-col lg:flex-row gap-8">
             {/* Sidebar Filters */}
-            <div className="w-full lg:w-64 flex-shrink-0 space-y-2">
-                <h3 className="font-bold text-2xl mb-6 px-2 text-foreground/80 font-serif">Categories</h3>
-                <div className="flex flex-col gap-1">
+            <div className="w-full lg:w-64 flex-shrink-0">
+                <h3 className="font-bold text-2xl mb-4 lg:mb-6 px-2 text-foreground/80 font-serif">Categories</h3>
+                <div className="flex lg:flex-col overflow-x-auto pb-4 lg:pb-0 gap-2 lg:gap-1 snap-x scrollbar-hide [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
                     {categories.map(cat => (
                         <button
                             key={cat}
                             onClick={() => setActiveCategory(cat)}
                             className={cn(
-                                "text-left px-5 py-3 text-base font-medium transition-all rounded-r-3xl border-l-4",
+                                "flex-shrink-0 snap-start px-5 py-2 lg:py-3 text-sm lg:text-base font-medium transition-all rounded-full lg:rounded-r-3xl lg:rounded-l-none border lg:border-0 lg:border-l-4 whitespace-nowrap",
                                 activeCategory === cat 
-                                    ? "bg-primary text-primary-foreground border-primary-foreground/20 shadow-sm translate-x-1" 
-                                    : "border-transparent hover:bg-secondary/40 text-muted-foreground hover:pl-6"
+                                    ? "bg-primary text-primary-foreground border-primary lg:border-primary-foreground/20 lg:shadow-sm lg:translate-x-1" 
+                                    : "bg-secondary/20 lg:bg-transparent border-transparent text-muted-foreground hover:bg-secondary/40 lg:hover:pl-6"
                             )}
                         >
                             {cat}

@@ -58,9 +58,18 @@ export default function ContactPage() {
               </div>
             </div>
             
-            {/* Map Placeholder */}
-            <div className="mt-10 h-64 bg-muted rounded-xl w-full flex items-center justify-center text-muted-foreground">
-                Map Embed Would Go Here
+            {/* Map Embed */}
+            <div className="mt-10 h-64 bg-muted rounded-xl w-full overflow-hidden border border-border">
+                <iframe 
+                    width="100%" 
+                    height="100%" 
+                    frameBorder="0" 
+                    scrolling="no" 
+                    marginHeight={0} 
+                    marginWidth={0} 
+                    src="https://maps.google.com/maps?q=123%20Baker%20Street,%20Sweet%20City&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                    className="w-full h-full filter grayscale-[0.5] hover:grayscale-0 transition-all duration-500"
+                ></iframe>
             </div>
           </div>
 

@@ -17,7 +17,7 @@ export function BestSellers() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-6 md:grid md:grid-cols-4 md:gap-6 md:pb-0 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
           {bestSellers.map((product, index) => (
             <motion.div
               key={product.id}
@@ -25,6 +25,7 @@ export function BestSellers() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
+              className="min-w-[220px] sm:min-w-0 flex-shrink-0 snap-start h-full"
             >
               <ProductCard product={product} />
             </motion.div>

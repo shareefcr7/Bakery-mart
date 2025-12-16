@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Outfit } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
+import { WishlistProvider } from "@/context/wishlist-context";
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -28,7 +29,9 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <WishlistProvider>
+            {children}
+          </WishlistProvider>
         </ThemeProvider>
       </body>
     </html>
