@@ -11,9 +11,9 @@
     /* #8B0000 Dark Red */
     --primary-foreground: 255 255 255;
 
-    --secondary: 350 100% 98%;
-    /* Light Pink */
-    --secondary-foreground: 139 0 0;
+    --secondary: 350 100% 25%;
+    /* Maroon */
+    --secondary-foreground: 0 0 100%;
 
     --muted: 245 245 245;
     --muted-foreground: 115 115 115;

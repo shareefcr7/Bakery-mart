@@ -7,14 +7,14 @@ import { ArrowRight } from "lucide-react"
 
 export function Highlights() {
   return (
-    <section className="py-20 bg-muted/30">
+    <section className="py-20 bg-secondary text-secondary-foreground">
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-end mb-10">
           <div>
-            <h2 className="text-2xl md:text-3xl font-bold mb-2">Shop By Collections</h2>
-            <p className="text-sm md:text-base text-muted-foreground">Everything you need for your baking masterpieces.</p>
+            <h2 className="text-2xl md:text-3xl font-bold mb-2 text-secondary-foreground">Shop By Collections</h2>
+            <p className="text-sm md:text-base text-secondary-foreground/80">Everything you need for your baking masterpieces.</p>
           </div>
-          <Link href="/products" className="text-primary font-semibold flex items-center gap-2 hover:gap-3 transition-all">
+          <Link href="/products" className="text-secondary-foreground font-semibold flex items-center gap-2 hover:gap-3 transition-all hover:text-white">
             View All <ArrowRight className="w-4 h-4" />
           </Link>
         </div>
