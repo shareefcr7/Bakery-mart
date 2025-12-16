@@ -46,7 +46,7 @@ export function Navbar() {
               href={link.href}
               className={cn(
                 "text-sm font-medium transition-colors hover:text-primary",
-                pathname === link.href ? "text-primary" : "text-foreground"
+                pathname === link.href ? "text-primary" : "text-[#1A120B]"
               )}
             >
               {link.label}
@@ -57,11 +57,11 @@ export function Navbar() {
         <div className="flex items-center gap-4">
            {/* Simple Search Trigger (Visual Only for now) */}
           
-          <Link href="/products" className="text-foreground hover:text-primary" aria-label="Search Products">
+          <Link href="/products" className="text-[#1A120B] hover:text-primary" aria-label="Search Products">
             <Search className="w-5 h-5" />
           </Link>
 
-          <Link href="/wishlist" className="relative text-foreground hover:text-primary transition-colors">
+          <Link href="/wishlist" className="relative text-[#1A120B] hover:text-primary transition-colors">
             <Heart className="w-5 h-5" />
             {wishlistCount > 0 && (
                 <span className="absolute -top-2 -right-2 bg-primary text-primary-foreground text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold animate-in zoom-in">
@@ -74,7 +74,7 @@ export function Navbar() {
 
           {/* Mobile Menu Trigger */}
           <button
-            className="md:hidden text-foreground w-10 h-10 flex items-center justify-center hover:bg-secondary/50 rounded-full transition-colors focus:outline-none"
+            className="md:hidden text-[#1A120B] w-10 h-10 flex items-center justify-center hover:bg-secondary/50 rounded-full transition-colors focus:outline-none"
             onClick={() => setIsOpen(true)}
             aria-label="Open menu"
           >
