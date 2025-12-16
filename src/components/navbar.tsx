@@ -2,6 +2,7 @@
 
 import * as React from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { usePathname } from "next/navigation"
 import { Menu, X, Search, Heart } from "lucide-react"
 import { ThemeToggle } from "./theme-toggle"
@@ -26,8 +27,15 @@ export function Navbar() {
   return (
     <nav className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/80 backdrop-blur-md">
       <div className="container mx-auto px-4 h-16 flex items-center justify-between">
-        <Link href="/" className="text-2xl font-bold tracking-tighter text-primary">
-          BAKERs MART
+        <Link href="/">
+          <Image 
+            src="/logo.png" 
+            alt="Bakery Mart" 
+            width={180} 
+            height={40} 
+            className="h-12 w-auto object-contain"
+            priority
+          />
         </Link>
 
         {/* Desktop Nav */}
@@ -84,8 +92,14 @@ export function Navbar() {
             {/* Header Row */}
             <div className="flex items-center justify-between p-4 border-b border-[#C19D6C]/20 bg-[#1A120B]">
                  {/* Left: Logo */}
-                 <Link href="/" onClick={() => setIsOpen(false)} className="font-serif italic text-xl font-bold text-white transition-colors hover:text-[#C19D6C]">
-                    Bakery Mart
+                 <Link href="/" onClick={() => setIsOpen(false)} className="transition-opacity hover:opacity-80">
+                    <Image 
+                        src="/logo.png" 
+                        alt="Bakery Mart" 
+                        width={150} 
+                        height={40} 
+                        className="h-8 w-auto object-contain"
+                    />
                  </Link>
 
                  {/* Right: Close Button */}
