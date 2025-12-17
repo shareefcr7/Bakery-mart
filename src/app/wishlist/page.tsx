@@ -70,7 +70,7 @@ export default function WishlistPage() {
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-center gap-8">
             {/* Left Logo */}
-            <div className="hidden md:block w-24 h-24 relative flex-shrink-0 animate-float">
+            <div className="hidden md:block w-[116px] h-[116px] relative flex-shrink-0 animate-float">
               <Image
                 src="/section-heading-red-white.png"
                 alt="Logo"
@@ -96,7 +96,7 @@ export default function WishlistPage() {
             </div>
 
             {/* Right Logo */}
-            <div className="hidden md:block w-24 h-24 relative flex-shrink-0 animate-float" style={{animationDelay: '0.5s'}}>
+            <div className="hidden md:block w-[116px] h-[116px] relative flex-shrink-0 animate-float" style={{animationDelay: '0.5s'}}>
               <Image
                 src="/section-heading-red-white.png"
                 alt="Logo"

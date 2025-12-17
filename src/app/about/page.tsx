@@ -15,7 +15,7 @@ export default function AboutPage() {
         <div className="container mx-auto px-4 text-center relative z-10">
           {/* 3D Animated Cake Decorations */}
           <div className="absolute left-0 top-1/2 -translate-y-1/2 hidden lg:block animate-float">
-            <div className="relative w-32 h-32 transform-gpu transition-transform duration-700 hover:scale-110 hover:rotate-12" style={{transformStyle: 'preserve-3d'}}>
+            <div className="relative w-[148px] h-[148px] transform-gpu transition-transform duration-700 hover:scale-110 hover:rotate-12" style={{transformStyle: 'preserve-3d'}}>
               <Image
                 src="/section-heading-red-white.png"
                 alt="Cake Decoration"
@@ -26,7 +26,7 @@ export default function AboutPage() {
           </div>
           
           <div className="absolute right-0 top-1/2 -translate-y-1/2 hidden lg:block animate-float" style={{animationDelay: '0.5s'}}>
-            <div className="relative w-32 h-32 transform-gpu transition-transform duration-700 hover:scale-110 hover:-rotate-12" style={{transformStyle: 'preserve-3d'}}>
+            <div className="relative w-[148px] h-[148px] transform-gpu transition-transform duration-700 hover:scale-110 hover:-rotate-12" style={{transformStyle: 'preserve-3d'}}>
               <Image
                 src="/section-heading-red-white.png"
                 alt="Cake Decoration"
