@@ -36,7 +36,7 @@ export default function AboutPage() {
             </div>
           </div>
 
-          <AnimatedHeading title="About Us" textColor="text-[#7E0806]" />
+          <AnimatedHeading title="About Us" textColor="text-[#f3e5b5]" />
           <FadeIn delay={0.2}><p className="text-xl text-[#7E0806]/90 mt-4 max-w-2xl mx-auto font-medium">The story behind the sweetness.</p></FadeIn>
         </div>
       </section>
