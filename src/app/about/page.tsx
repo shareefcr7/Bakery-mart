@@ -41,7 +41,7 @@ export default function AboutPage() {
                  />
              </div>
              <div>
-                 <h2 className="text-3xl font-bold mb-6 text-white">Our Story</h2>
+                 <h2 className="text-3xl font-bold mb-6 text-[#f3e5b5]">Our Story</h2>
                  <p className="text-lg text-white/70 leading-relaxed mb-6">
                      Founded in 2024, BAKERs MART began with a simple mission: to provide professional-grade baking supplies to everyone. We noticed that high-quality tools were often inaccessible to home bakers, and we set out to bridge that gap.
                  </p>
@@ -53,13 +53,13 @@ export default function AboutPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="bg-white/5 backdrop-blur-sm p-8 rounded-2xl border border-white/10 hover:bg-white/10 transition-colors">
-                  <h3 className="text-2xl font-bold mb-4 text-[#d4af37]">Our Mission</h3>
+                  <h3 className="text-2xl font-bold mb-4 text-[#f3e5b5]">Our Mission</h3>
                   <p className="text-white/70">
                       To empower bakers of all skill levels with the highest quality tools and ingredients, inspiring creativity and excellence in every bake.
                   </p>
               </div>
               <div className="bg-white/5 backdrop-blur-sm p-8 rounded-2xl border border-white/10 hover:bg-white/10 transition-colors">
-                  <h3 className="text-2xl font-bold mb-4 text-[#d4af37]">Our Vision</h3>
+                  <h3 className="text-2xl font-bold mb-4 text-[#f3e5b5]">Our Vision</h3>
                   <p className="text-white/70">
                       To be the world's most trusted partner in the baking community, fostering a global culture of sharing, learning, and celebrating the art of baking.
                   </p>
