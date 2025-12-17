@@ -84,10 +84,10 @@ export default function ProductsPage() {
     <main className="min-h-screen bg-[#fff5f5]">
       <Navbar />
       
-      <div className="bg-primary/5 py-12 mb-8">
+      <div className="bg-[#7E0806] py-12 mb-8">
         <div className="container mx-auto px-4">
-            <AnimatedHeading title="Our Products" />
-            <p className="text-muted-foreground max-w-2xl mx-auto text-center mt-4">Explore our extensive collection of professional baking supplies.</p>
+            <AnimatedHeading title="Our Products" textColor="text-white" />
+            <p className="text-white/80 max-w-2xl mx-auto text-center mt-4">Explore our extensive collection of professional baking supplies.</p>
         </div>
       </div>
 

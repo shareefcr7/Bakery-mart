@@ -37,8 +37,8 @@ export function Navbar() {
     <nav className={cn(
       "sticky top-0 z-50 w-full transition-all duration-300 border-b",
       isScrolled 
-        ? "bg-primary/95 backdrop-blur-md shadow-lg border-white/10 py-0" 
-        : "bg-primary border-white/20 py-2"
+        ? "bg-[#7E0806]/95 backdrop-blur-md shadow-lg border-white/10 py-0" 
+        : "bg-[#7E0806] border-white/20 py-2"
     )}>
       <div className={cn(
         "container mx-auto px-4 flex items-center justify-between transition-all duration-300",
@@ -120,11 +120,11 @@ export function Navbar() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: "100%" }}
             transition={{ type: "spring", damping: 25, stiffness: 200 }}
-            className="fixed inset-0 top-0 left-0 w-screen h-screen z-[9999] bg-[#720e1e] text-white flex flex-col overflow-hidden"
-            style={{ backgroundColor: "#720e1e" }}
+            className="fixed inset-0 top-0 left-0 w-screen h-screen z-[9999] bg-[#7E0806] text-white flex flex-col overflow-hidden"
+            style={{ backgroundColor: "#7E0806" }}
         >
             {/* Header Row */}
-            <div className="flex items-center justify-between py-4 pr-5 pl-5 border-b border-white/20 bg-[#720e1e]">
+            <div className="flex items-center justify-between py-4 pr-5 pl-5 border-b border-white/20 bg-[#7E0806]">
                  {/* Left: Logo */}
                  <Link href="/" onClick={() => setIsOpen(false)} className="transition-opacity hover:opacity-80">
                     <Image 
