@@ -23,8 +23,8 @@ export default function AboutPage() {
             <div className="absolute inset-0 bg-black/70 backdrop-blur-[2px]" />
         </div>
 
-        <div className="container px-4 text-center relative z-10 flex flex-col items-center justify-center">
-          <AnimatedHeading title="About Us" textColor="text-white" className="w-full" />
+        <div className="container mx-auto px-4 text-center relative z-10">
+          <AnimatedHeading title="About Us" textColor="text-white" />
           <p className="text-xl text-white/90 mt-4 max-w-2xl mx-auto font-medium">The story behind the sweetness.</p>
         </div>
       </section>

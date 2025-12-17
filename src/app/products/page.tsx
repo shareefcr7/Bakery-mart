@@ -81,7 +81,7 @@ function ProductContent() {
 
 export default function ProductsPage() {
   return (
-    <main className="min-h-screen bg-background">
+    <main className="min-h-screen bg-[#fff5f5]">
       <Navbar />
       
       <div className="bg-primary/5 py-12 mb-8">
