@@ -156,17 +156,29 @@ export function ShopByCollections() {
   return (
     <section className="bg-neutral-950">
       {/* White Header Section */}
-      <div className="bg-white py-16">
+      <div className="bg-white py-16 overflow-hidden">
         <div className="container mx-auto px-4">
           <div className="text-center relative">
-            {/* Centered Logo Decoration */}
-            <div className="flex justify-center mb-8 animate-float">
-              <div className="relative w-24 h-24 transition-transform duration-500 hover:scale-110 hover:rotate-6" style={{transformStyle: 'preserve-3d'}}>
+            {/* Left Logo */}
+            <div className="absolute left-0 top-1/2 -translate-y-1/2 hidden lg:block animate-float">
+              <div className="relative w-32 h-32 transform-gpu transition-transform duration-700 hover:scale-110 hover:rotate-12" style={{transformStyle: 'preserve-3d'}}>
                 <Image
                   src="/section-heading-red-white.png"
-                  alt="Decoration"
+                  alt="Cake Decoration"
                   fill
-                  className="object-contain opacity-40 mix-blend-multiply"
+                  className="object-contain opacity-30 mix-blend-multiply"
+                />
+              </div>
+            </div>
+            
+            {/* Right Logo */}
+            <div className="absolute right-0 top-1/2 -translate-y-1/2 hidden lg:block animate-float" style={{animationDelay: '0.5s'}}>
+              <div className="relative w-32 h-32 transform-gpu transition-transform duration-700 hover:scale-110 hover:-rotate-12" style={{transformStyle: 'preserve-3d'}}>
+                <Image
+                  src="/section-heading-red-white.png"
+                  alt="Cake Decoration"
+                  fill
+                  className="object-contain opacity-30 mix-blend-multiply"
                 />
               </div>
             </div>
