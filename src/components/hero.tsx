@@ -35,7 +35,7 @@ export function Hero() {
         >
           {/* Animated Heading Replacement */}
           <AnimatedHeading 
-            title="Taste the Luxury in Every Bite" 
+            title="" 
             textColor="text-white" 
             className="text-4xl md:text-6xl lg:text-7xl mb-8 leading-tight py-8"
             showLeftIcon={false}
