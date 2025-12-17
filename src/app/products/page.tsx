@@ -102,7 +102,7 @@ export default function ProductsPage() {
     <main className="min-h-screen bg-black text-[#f3e5b5]">
       <Navbar />
       
-      <div className="relative py-24 mb-8 bg-[#f3e5b5]">
+      <div className="relative py-24 mb-8 bg-white">
         <div className="container mx-auto px-4 relative z-10">
             <AnimatedHeading title="Our Products" textColor="text-neutral-900" />
             <p className="text-neutral-700 max-w-2xl mx-auto text-center mt-4 text-lg">Explore our extensive collection of professional baking supplies.</p>
