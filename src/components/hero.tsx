@@ -71,13 +71,13 @@ export function Hero() {
           >
             <Link 
               href="/products" 
-              className="group relative px-10 py-4 bg-[#720e1e] text-white font-bold text-lg rounded-full overflow-hidden shadow-lg shadow-[#720e1e]/30 transition-all hover:scale-105 hover:shadow-[#720e1e]/50"
+              className="group relative px-10 py-4 bg-[#7E0806] text-white font-bold text-lg rounded-full overflow-hidden shadow-lg shadow-[#7E0806]/30 transition-all hover:scale-105 hover:shadow-[#7E0806]/50"
             >
               <span className="relative z-10 flex items-center gap-2">
                 Explore Menu
                 <svg className="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
               </span>
-              <div className="absolute inset-0 bg-gradient-to-r from-[#8a1c2e] to-[#720e1e] opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="absolute inset-0 bg-gradient-to-r from-[#8a1c2e] to-[#7E0806] opacity-0 group-hover:opacity-100 transition-opacity" />
             </Link>
             
             <Link 
