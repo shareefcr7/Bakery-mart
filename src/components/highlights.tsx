@@ -43,7 +43,7 @@ export function Highlights() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1, duration: 1 }}
-            className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-2 text-white/70"
+            className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-2 text-[#f3e5b5]"
         >
             <span className="text-[10px] uppercase tracking-[0.3em]">Discover</span>
             <div className="w-[1px] h-8 bg-gradient-to-b from-white/0 via-white/50 to-white/0" />
