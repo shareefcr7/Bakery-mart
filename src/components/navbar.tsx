@@ -1,5 +1,5 @@
 "use client"
-import logo from "@/assets/images/navbar-logo-final.png"
+import logo from "@/assets/images/section-header-bg.png"
 
 import * as React from "react"
 
@@ -33,9 +33,9 @@ export function Navbar() {
           <Image 
             src={logo}
             alt="Bakers Mart"
-            width={200}
-            height={60}
-            className="h-16 w-auto object-contain"
+            width={600}
+            height={120}
+            className="h-32 w-auto object-contain"
             priority
           />
         </Link>
@@ -48,7 +48,7 @@ export function Navbar() {
               href={link.href}
               className={cn(
                 "text-sm font-medium transition-colors hover:text-white",
-                pathname === link.href ? "text-white font-bold" : "text-white/80"
+                pathname === link.href ? "text-[#f3e5b5] font-bold" : "text-[#f3e5b5]/80"
               )}
             >
               {link.label}
@@ -58,14 +58,14 @@ export function Navbar() {
 
         {/* Right Icons */}
         <div className="flex items-center gap-4">
-          <Link href="/products" className="text-white hover:text-white/80 transition-colors" aria-label="Search Products">
+          <Link href="/products" className="text-[#f3e5b5] hover:text-white transition-colors" aria-label="Search Products">
             <Search className="w-5 h-5" />
           </Link>
 
-          <Link href="/wishlist" className="relative text-white hover:text-white/80 transition-colors">
+          <Link href="/wishlist" className="relative text-[#f3e5b5] hover:text-white transition-colors">
             <Heart className="w-5 h-5" />
             {wishlistCount > 0 && (
-              <span className="absolute -top-2 -right-2 bg-white text-[#7E0806] text-xs w-5 h-5 rounded-full flex items-center justify-center font-bold">
+              <span className="absolute -top-2 -right-2 bg-[#f3e5b5] text-[#7E0806] text-xs w-5 h-5 rounded-full flex items-center justify-center font-bold">
                 {wishlistCount}
               </span>
             )}
@@ -73,7 +73,7 @@ export function Navbar() {
           
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden text-white"
+            className="md:hidden text-[#f3e5b5]"
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle menu"
           >
@@ -93,7 +93,7 @@ export function Navbar() {
                 onClick={() => setIsOpen(false)}
                 className={cn(
                   "text-base font-medium py-2 transition-colors",
-                  pathname === link.href ? "text-white font-bold" : "text-white/80 hover:text-white"
+                  pathname === link.href ? "text-[#f3e5b5] font-bold" : "text-[#f3e5b5]/80 hover:text-white"
                 )}
               >
                 {link.label}
