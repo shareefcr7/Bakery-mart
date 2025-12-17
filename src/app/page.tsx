@@ -1,6 +1,5 @@
 import { Hero } from "@/components/hero"
 import { Features } from "@/components/features"
-import { Highlights } from "@/components/highlights"
 import { BestSellers } from "@/components/best-sellers"
 import { Testimonials } from "@/components/testimonials"
 import { Navbar } from "@/components/navbar"

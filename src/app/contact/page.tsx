@@ -1,6 +1,5 @@
 "use client"
 
-import Image from "next/image"
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 import { Mail, Phone, MapPin, Send } from "lucide-react"
@@ -28,7 +27,7 @@ export default function ContactPage() {
 
         <div className="container mx-auto px-4 text-center relative z-10">
           <AnimatedHeading title="Contact Us" textColor="text-[#7E0806]" />
-          <FadeIn delay={0.2}><p className="text-[#7E0806]/80 mt-4 text-lg md:text-xl font-medium max-w-2xl mx-auto">We'd love to hear from you. Get in touch with us.</p></FadeIn>
+          <FadeIn delay={0.2}><p className="text-[#7E0806]/80 mt-4 text-lg md:text-xl font-medium max-w-2xl mx-auto">We&apos;d love to hear from you. Get in touch with us.</p></FadeIn>
         </div>
       </section>
 

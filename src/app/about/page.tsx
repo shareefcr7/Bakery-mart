@@ -66,7 +66,7 @@ export default function AboutPage() {
               <div className="bg-white/5 backdrop-blur-sm p-8 rounded-2xl border border-white/10 hover:bg-white/10 transition-colors">
                   <h3 className="text-2xl font-bold mb-4 text-[#f3e5b5]">Our Vision</h3>
                   <p className="text-[#f3e5b5]">
-                      To be the world's most trusted partner in the baking community, fostering a global culture of sharing, learning, and celebrating the art of baking.
+                    Every cake we bake tells a story—a story of tradition, innovation, and the simple joy of sharing something sweet with the ones you love. It&apos;s not just baking; it&apos;s an art form we&apos;ve perfected over generations.
                   </p>
               </div>
           </div>

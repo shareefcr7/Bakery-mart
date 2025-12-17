@@ -10,7 +10,7 @@ import { ArrowRight, HeartOff } from "lucide-react"
 
 import Image from "next/image"
 
-import { AnimatedHeading } from "@/components/ui/animated-heading"
+
 
 export default function WishlistPage() {
   const { items } = useWishlist()
@@ -22,7 +22,7 @@ export default function WishlistPage() {
       <div className="bg-black py-12 mb-8 border-b border-[#f3e5b5]/10">
         <div className="container mx-auto px-4 text-center">
             <h1 className="text-4xl md:text-5xl font-bold mb-4 font-serif text-[#f3e5b5]">Your Wishlist</h1>
-            <p className="text-[#f3e5b5]/80">Save your favorite items for later</p>
+            <p className="text-[#f3e5b5]/60 mb-8">You haven&apos;t added any items to your wishlist yet.</p>
         </div>
       </div>
 
@@ -48,7 +48,7 @@ export default function WishlistPage() {
                 </div>
                 <h2 className="text-2xl font-bold mb-4 text-white">Your wishlist is empty</h2>
                 <p className="text-white/70 mb-8 max-w-md">
-                    Seems like you haven't found anything yet. Browse our products and find the tools you need!
+                    Seems like you haven&apos;t found anything yet. Browse our products and find the tools you need!
                 </p>
                 <Link 
                     href="/products" 

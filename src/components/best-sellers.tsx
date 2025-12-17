@@ -3,16 +3,20 @@
 import { ProductCard } from "./product-card"
 import { products } from "@/lib/data"
 import { motion } from "framer-motion"
+import { AnimatedHeading } from "./ui/animated-heading"
 
 export function BestSellers() {
   const bestSellers = products.filter(p => p.isBestSeller).slice(0, 4)
 
   return (
-    <section className="py-20 bg-background">
+    <section className="py-20 bg-neutral-950">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold mb-4 font-sans text-foreground">Best Sellers</h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
+          <AnimatedHeading 
+            title="Best Sellers" 
+            className="text-white"
+          />
+          <p className="text-neutral-400 max-w-2xl mx-auto mt-4">
             Our most popular tools and ingredients, trusted by professional bakers.
           </p>
         </div>

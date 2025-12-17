@@ -4,7 +4,6 @@ import { useState, useEffect, Suspense } from "react"
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 import { ProductCard } from "@/components/product-card"
-import Image from "next/image"
 import { categories, products } from "@/lib/data"
 import { useSearchParams } from "next/navigation"
 import { AnimatePresence, motion } from "framer-motion"
@@ -19,6 +18,7 @@ function ProductContent() {
   
   useEffect(() => {
      if(searchParams.get("category")) {
+         // eslint-disable-next-line react-hooks/exhaustive-deps
          setActiveCategory(searchParams.get("category")!)
      }
   }, [searchParams])

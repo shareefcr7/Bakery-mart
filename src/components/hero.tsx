@@ -5,7 +5,6 @@ import Link from "next/link"
 import Image from "next/image"
 import { motion } from "framer-motion"
 
-import { AnimatedHeading } from "@/components/ui/animated-heading"
 import { FadeIn } from "@/components/ui/fade-in"
 
 export function Hero() {
