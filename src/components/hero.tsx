@@ -14,7 +14,7 @@ export function Hero() {
       {/* Background Image with Parallax-like feel */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/hero-bg-final.jpg"
+          src="/hero-bg-final-v2.jpg"
           alt="Premium Red Velvet Cake"
           fill
           className="object-cover scale-105 animate-slow-zoom" 
