@@ -50,7 +50,7 @@ export function Footer() {
           {/* Left Logo */}
           <div className="relative w-12 h-12 opacity-50 hover:opacity-100 transition-opacity">
             <Image
-              src="/section-heading-red-white.png"
+              src="/heading-logo.png"
               alt="Logo"
               fill
               className="object-contain"
@@ -62,7 +62,7 @@ export function Footer() {
           {/* Right Logo */}
           <div className="relative w-12 h-12 opacity-50 hover:opacity-100 transition-opacity">
             <Image
-              src="/section-heading-red-white.png"
+              src="/heading-logo.png"
               alt="Logo"
               fill
               className="object-contain"
