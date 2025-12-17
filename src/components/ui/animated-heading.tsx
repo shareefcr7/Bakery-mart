@@ -19,7 +19,7 @@ export function AnimatedHeading({ title, className, textColor = "text-foreground
         whileInView={{ x: 0, opacity: 1, rotate: 0 }}
         transition={{ duration: 0.8, type: "spring", bounce: 0.4 }}
         viewport={{ once: true }}
-        className="relative w-[100px] h-[70px] md:w-[120px] md:h-[90px] flex-shrink-0"
+        className="relative w-[150px] h-[120px] md:w-[200px] md:h-[140px] flex-shrink-0"
       >
         <Image
           src="/wishlist-new-banner.png"
@@ -46,7 +46,7 @@ export function AnimatedHeading({ title, className, textColor = "text-foreground
         whileInView={{ x: 0, opacity: 1, rotate: 0 }}
         transition={{ duration: 0.8, type: "spring", bounce: 0.4 }}
         viewport={{ once: true }}
-        className="relative w-[100px] h-[70px] md:w-[120px] md:h-[90px] flex-shrink-0"
+        className="relative w-[150px] h-[120px] md:w-[200px] md:h-[140px] flex-shrink-0"
       >
         <Image
           src="/wishlist-new-banner.png"

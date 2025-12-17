@@ -42,17 +42,17 @@ export function Navbar() {
     )}>
       <div className={cn(
         "container mx-auto px-4 flex items-center justify-between transition-all duration-300",
-        isScrolled ? "h-[70px]" : "h-[100px]"
+        isScrolled ? "h-[90px]" : "h-[150px]"
       )}>
         <Link href="/" className="h-full py-1 flex items-center">
           <Image 
             src="/wishlist-new-banner.png" 
             alt="Bakery Mart" 
             width={300} 
-            height={90} 
+            height={140} 
             className={cn(
               "w-auto object-contain transition-all duration-300",
-              isScrolled ? "h-[50px] md:h-[70px]" : "h-[70px] md:h-[90px]"
+              isScrolled ? "h-[70px] md:h-[90px]" : "h-[120px] md:h-[140px]"
             )}
             priority
           />
@@ -128,11 +128,11 @@ export function Navbar() {
                  {/* Left: Logo */}
                  <Link href="/" onClick={() => setIsOpen(false)} className="transition-opacity hover:opacity-80">
                     <Image 
-                        src="/bakersmart-logo.jpg" 
+                        src="/wishlist-new-banner.png" 
                         alt="Bakery Mart" 
                         width={200} 
-                        height={50} 
-                        className="h-[50px] w-auto object-contain object-left"
+                        height={70} 
+                        className="h-[70px] w-auto object-contain object-left"
                     />
                  </Link>
 
