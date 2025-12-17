@@ -19,6 +19,7 @@ export default function WishlistPage() {
     <main className="min-h-screen bg-black text-[#f3e5b5]">
       <Navbar />
       
+      {/* 1st Section: Header */}
       <div className="bg-black py-12 mb-8 border-b border-[#f3e5b5]/10">
         <div className="container mx-auto px-4 text-center">
             <h1 className="text-4xl md:text-5xl font-bold mb-4 font-serif text-[#f3e5b5]">Your Wishlist</h1>
@@ -26,20 +27,7 @@ export default function WishlistPage() {
         </div>
       </div>
 
-      {/* Crystal Clear Banner Image */}
-      <div className="container mx-auto px-4 mb-12">
-        <div className="relative w-full h-[300px] md:h-[400px] rounded-2xl overflow-hidden shadow-2xl border border-white/10">
-            <Image
-                src="/wishlist-new-banner.png"
-                alt="Bakersmart Wishlist"
-                fill
-                className="object-contain"
-                quality={100}
-                priority
-            />
-        </div>
-      </div>
-
+      {/* 2nd Section: Wishlist Products */}
       <div className="container mx-auto px-4 pb-20">
         {items.length === 0 ? (
             <div className="flex flex-col items-center justify-center py-20 text-center">
@@ -75,6 +63,22 @@ export default function WishlistPage() {
                 </AnimatePresence>
             </div>
         )}
+      </div>
+
+      {/* 3rd Section: Banner Image with Golden Cream Background */}
+      <div className="bg-[#f3e5b5] py-12">
+        <div className="container mx-auto px-4">
+          <div className="relative w-full h-[300px] md:h-[400px] rounded-2xl overflow-hidden shadow-2xl border border-white/10">
+              <Image
+                  src="/wishlist-new-banner.png"
+                  alt="Bakersmart Wishlist"
+                  fill
+                  className="object-contain"
+                  quality={100}
+                  priority
+              />
+          </div>
+        </div>
       </div>
       
       <Footer />
