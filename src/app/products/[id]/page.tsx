@@ -4,7 +4,7 @@ import { products } from "@/lib/data"
 import { notFound } from "next/navigation"
 import Image from "next/image"
 import Link from "next/link"
-import { Star, Truck, Shield, RefreshCcw, Check, Mail, Share2 } from "lucide-react"
+import { Check, Mail, Share2 } from "lucide-react"
 import { ProductCard } from "@/components/product-card"
 
 // This is required for static site generation with dynamic routes
