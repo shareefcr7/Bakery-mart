@@ -19,10 +19,10 @@ export function AnimatedHeading({ title, className, textColor = "text-foreground
         whileInView={{ x: 0, opacity: 1, rotate: 0 }}
         transition={{ duration: 0.8, type: "spring", bounce: 0.4 }}
         viewport={{ once: true }}
-        className="relative w-[110px] h-[80px] md:w-[150px] md:h-[110px] flex-shrink-0"
+        className="relative w-[100px] h-[70px] md:w-[120px] md:h-[90px] flex-shrink-0"
       >
         <Image
-          src="/heading-logo.png"
+          src="/wishlist-new-banner.png"
           alt="Bakersmart Logo"
           fill
           className="object-contain"
@@ -46,10 +46,10 @@ export function AnimatedHeading({ title, className, textColor = "text-foreground
         whileInView={{ x: 0, opacity: 1, rotate: 0 }}
         transition={{ duration: 0.8, type: "spring", bounce: 0.4 }}
         viewport={{ once: true }}
-        className="relative w-[110px] h-[80px] md:w-[150px] md:h-[110px] flex-shrink-0"
+        className="relative w-[100px] h-[70px] md:w-[120px] md:h-[90px] flex-shrink-0"
       >
         <Image
-          src="/heading-logo.png"
+          src="/wishlist-new-banner.png"
           alt="Bakersmart Logo"
           fill
           className="object-contain"

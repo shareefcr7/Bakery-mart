@@ -46,13 +46,13 @@ export function Navbar() {
       )}>
         <Link href="/" className="h-full py-1 flex items-center">
           <Image 
-            src="/bakersmart-logo.jpg" 
+            src="/wishlist-new-banner.png" 
             alt="Bakery Mart" 
-            width={280} 
+            width={300} 
             height={90} 
             className={cn(
               "w-auto object-contain transition-all duration-300",
-              isScrolled ? "h-[60px]" : "h-[90px]"
+              isScrolled ? "h-[50px] md:h-[70px]" : "h-[70px] md:h-[90px]"
             )}
             priority
           />
