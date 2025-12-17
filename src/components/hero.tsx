@@ -27,19 +27,23 @@ export function Hero() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 container mx-auto px-4 text-center md:text-left h-full flex flex-col justify-center">
+      <div className="relative z-10 container mx-auto px-4 text-center md:text-left h-full flex flex-col justify-end pb-20">
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1.2, ease: "easeOut" }}
           className="max-w-3xl mx-auto md:mx-0 md:pl-8 lg:pl-16 pt-12"
         >
           {/* Main Heading */}
           {/* Main Heading Removed */}
 
+          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 tracking-wide drop-shadow-lg">
+            Premium Bakery
+          </h2>
+
           <FadeIn delay={0.6}>
             <p 
-              className="text-base md:text-lg text-white/70 max-w-xl mx-auto md:mx-0 mb-8 font-light leading-relaxed"
+              className="text-base md:text-lg text-white/90 max-w-xl mx-auto md:mx-0 mb-8 font-light leading-relaxed drop-shadow-md"
             >
               Experience the finest selection of handcrafted cakes and pastries, 
               baked with passion and perfected for your special moments.
@@ -47,14 +51,14 @@ export function Hero() {
           </FadeIn>
           
           <motion.div 
-            className="flex flex-col sm:flex-row gap-6 justify-center md:justify-start items-center mt-12"
+            className="flex flex-col sm:flex-row gap-6 justify-center md:justify-start items-center mt-8"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1, duration: 0.8 }}
           >
             <Link 
               href="/products" 
-              className="group relative px-10 py-5 bg-[#7E0806] text-white font-bold text-xl rounded-full overflow-hidden shadow-lg shadow-[#7E0806]/30 transition-all hover:scale-105 hover:shadow-[#7E0806]/50 w-full sm:w-auto"
+              className="group relative px-10 py-4 bg-[#7E0806] text-white font-bold text-lg rounded-full overflow-hidden shadow-lg shadow-[#7E0806]/30 transition-all hover:scale-105 hover:shadow-[#7E0806]/50 w-full sm:w-auto"
             >
               <span className="relative z-10 flex items-center justify-center gap-2">
                 Explore Menu
@@ -65,7 +69,7 @@ export function Hero() {
             
             <Link 
               href="/about" 
-              className="px-10 py-5 bg-transparent border border-white/30 text-white font-semibold text-xl rounded-full hover:bg-white/10 hover:border-white/50 transition-all backdrop-blur-sm w-full sm:w-auto"
+              className="px-10 py-4 bg-transparent border border-white/40 text-white font-semibold text-lg rounded-full hover:bg-white/10 hover:border-white/80 transition-all backdrop-blur-sm w-full sm:w-auto"
             >
               Our Heritage
             </Link>
@@ -75,13 +79,13 @@ export function Hero() {
 
         {/* Scroll Indicator */}
       <motion.div 
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 text-white/50 flex flex-col items-center gap-2"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
+        className="absolute bottom-12 left-8 md:left-16 z-20 text-white/70 flex flex-col items-center gap-2"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 2, duration: 1 }}
       >
-        <span className="text-xs uppercase tracking-widest">Scroll</span>
-        <div className="w-[1px] h-12 bg-gradient-to-b from-white/0 via-white/50 to-white/0" />
+        <span className="text-[10px] uppercase tracking-[0.2em] rotate-[-90deg] translate-y-8 origin-left w-24 text-right">Scroll Down</span>
+        <div className="h-24 w-[1px] bg-gradient-to-b from-white/0 via-white/70 to-white/0 mt-12" />
       </motion.div>
     </section>
   )
