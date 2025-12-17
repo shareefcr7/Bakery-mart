@@ -3,6 +3,7 @@ import { Footer } from "@/components/footer"
 import Image from "next/image"
 
 import { AnimatedHeading } from "@/components/ui/animated-heading"
+import { FadeIn } from "@/components/ui/fade-in"
 
 export default function AboutPage() {
   return (
@@ -25,7 +26,7 @@ export default function AboutPage() {
 
         <div className="container mx-auto px-4 text-center relative z-10">
           <AnimatedHeading title="About Us" textColor="text-[#7E0806]" />
-          <p className="text-xl text-[#7E0806]/90 mt-4 max-w-2xl mx-auto font-medium">The story behind the sweetness.</p>
+          <FadeIn delay={0.2}><p className="text-xl text-[#7E0806]/90 mt-4 max-w-2xl mx-auto font-medium">The story behind the sweetness.</p></FadeIn>
         </div>
       </section>
 
@@ -41,13 +42,17 @@ export default function AboutPage() {
                  />
              </div>
              <div>
-                 <h2 className="text-3xl font-bold mb-6 text-[#f3e5b5]">Our Story</h2>
+                 <FadeIn delay={0.2}><h2 className="text-3xl font-bold mb-6 text-[#f3e5b5]">Our Story</h2></FadeIn>
+                 <FadeIn delay={0.4}>
                  <p className="text-lg text-[#f3e5b5] leading-relaxed mb-6">
                      Founded in 2024, BAKERs MART began with a simple mission: to provide professional-grade baking supplies to everyone. We noticed that high-quality tools were often inaccessible to home bakers, and we set out to bridge that gap.
                  </p>
+                 </FadeIn>
+                 <FadeIn delay={0.6}>
                  <p className="text-lg text-[#f3e5b5] leading-relaxed">
                      Today, we are a leading supplier of baking essentials, from precision tools to premium ingredients, helping thousands of bakers turn their culinary visions into reality.
                  </p>
+                 </FadeIn>
              </div>
           </div>
 

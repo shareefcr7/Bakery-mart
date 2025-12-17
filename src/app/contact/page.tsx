@@ -6,6 +6,7 @@ import { Footer } from "@/components/footer"
 import { Mail, Phone, MapPin, Send } from "lucide-react"
 
 import { AnimatedHeading } from "@/components/ui/animated-heading"
+import { FadeIn } from "@/components/ui/fade-in"
 
 export default function ContactPage() {
   return (
@@ -27,7 +28,7 @@ export default function ContactPage() {
 
         <div className="container mx-auto px-4 text-center relative z-10">
           <AnimatedHeading title="Contact Us" textColor="text-[#7E0806]" />
-          <p className="text-[#7E0806]/80 mt-4 text-lg md:text-xl font-medium max-w-2xl mx-auto">We'd love to hear from you. Get in touch with us.</p>
+          <FadeIn delay={0.2}><p className="text-[#7E0806]/80 mt-4 text-lg md:text-xl font-medium max-w-2xl mx-auto">We'd love to hear from you. Get in touch with us.</p></FadeIn>
         </div>
       </section>
 
@@ -35,10 +36,10 @@ export default function ContactPage() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Contact Info */}
           <div>
-            <h2 className="text-2xl font-bold mb-6 text-[#f3e5b5]">Get in Touch</h2>
-            <p className="text-[#f3e5b5] mb-8">
+            <FadeIn delay={0.2}><h2 className="text-2xl font-bold mb-6 text-[#f3e5b5]">Get in Touch</h2></FadeIn>
+            <FadeIn delay={0.4}><p className="text-[#f3e5b5] mb-8">
               Have a question about our products or need help with an order? Our team is here to assist you.
-            </p>
+            </p></FadeIn>
             
             <div className="space-y-6">
               <div className="flex items-start gap-4">

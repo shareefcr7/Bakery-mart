@@ -5,6 +5,8 @@ import Link from "next/link"
 import Image from "next/image"
 import { motion } from "framer-motion"
 
+import { AnimatedHeading } from "@/components/ui/animated-heading"
+
 export function Hero() {
   return (
     <section className="relative w-full min-h-screen flex items-center justify-center overflow-hidden">
@@ -14,11 +16,26 @@ export function Hero() {
           src="/hero-bg-red.png"
           alt="Premium Red Velvet Cake"
           fill
-          className="object-cover scale-105 animate-slow-zoom" // Added custom class or keep standard, simple scale is fine. I'll stick to motion
+          className="object-cover scale-105 animate-slow-zoom" 
           priority
         />
-        {/* Gradient Overlay for better text readability and mood */}
+        {/* Gradient Overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/80" />
+        
+        {/* Extra Floating Cake Image - Right Side Animation */}
+         <motion.div
+            initial={{ x: 100, opacity: 0, rotate: 20 }}
+            animate={{ x: 0, opacity: 1, rotate: 0 }}
+            transition={{ duration: 1.5, delay: 0.5, type: "spring" }}
+            className="absolute right-0 top-1/2 -translate-y-1/2 w-[300px] h-[300px] hidden lg:block opacity-80 pointer-events-none z-0"
+         >
+            <Image 
+                src="/hero-bg-red.png" 
+                alt="Floating Cake" 
+                fill 
+                className="object-contain drop-shadow-2xl opacity-60 mix-blend-overlay"
+            />
+         </motion.div>
       </div>
 
       {/* Content */}
@@ -27,7 +44,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2, ease: "easeOut" }}
-          className="max-w-5xl mx-auto"
+          className="max-w-6xl mx-auto"
         >
             {/* Glassmorphism Badge */}
           <motion.div 
@@ -50,16 +67,12 @@ export function Hero() {
             </span>
           </motion.div>
 
-          {/* Main Heading */}
-          <motion.h1 
-            className="text-5xl md:text-7xl lg:text-9xl font-bold text-white mb-8 tracking-tighter leading-[0.9] drop-shadow-2xl"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 1, ease: "easeOut" }}
-          >
-            Taste the <span className="italic text-transparent bg-clip-text bg-gradient-to-r from-[#d4af37] to-[#f3e5b5]" style={{ fontFamily: 'Playfair Display, serif' }}>Luxury</span> <br />
-            in Every Bite
-          </motion.h1>
+          {/* Animated Heading Replacement */}
+          <AnimatedHeading 
+            title="Taste the Luxury in Every Bite" 
+            textColor="text-white" 
+            className="text-4xl md:text-6xl lg:text-7xl mb-8 leading-tight py-8"
+          />
 
           <motion.p 
             className="text-lg md:text-2xl text-white/80 max-w-2xl mx-auto mb-12 font-light leading-relaxed"
