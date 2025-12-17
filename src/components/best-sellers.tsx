@@ -9,14 +9,14 @@ export function BestSellers() {
   const bestSellers = products.filter(p => p.isBestSeller).slice(0, 4)
 
   return (
-    <section className="py-20 bg-neutral-950">
+    <section className="py-20 bg-white">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <AnimatedHeading 
             title="Best Sellers" 
-            className="text-white"
+            className="text-neutral-900"
           />
-          <p className="text-neutral-400 max-w-2xl mx-auto mt-4">
+          <p className="text-neutral-600 max-w-2xl mx-auto mt-4">
             Our most popular tools and ingredients, trusted by professional bakers.
           </p>
         </div>
@@ -31,7 +31,7 @@ export function BestSellers() {
               transition={{ delay: index * 0.1 }}
               className="h-full"
             >
-              <ProductCard product={product} />
+              <ProductCard product={product} variant="light" />
             </motion.div>
           ))}
         </div>
