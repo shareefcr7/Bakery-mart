@@ -185,7 +185,7 @@ export function ShopByCollections() {
 
             <AnimatedHeading 
               title="Shop By Collections" 
-              className="text-3xl md:text-5xl font-bold text-white mb-4"
+              className="text-3xl md:text-5xl font-bold text-[#f3e5b5] mb-4"
             />
             <p className="text-neutral-400 max-w-2xl mx-auto text-lg mt-4">
               Curated selections of our finest cakes and baking essentials.
