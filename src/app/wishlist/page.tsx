@@ -52,7 +52,7 @@ export default function WishlistPage() {
                 </p>
                 <Link 
                     href="/products" 
-                    className="flex items-center gap-2 bg-white text-[#7E0806] px-6 py-3 rounded-full font-bold hover:bg-white/90 transition-colors"
+                    className="flex items-center gap-2 bg-white text-[#DC2626] px-6 py-3 rounded-full font-bold hover:bg-white/90 transition-colors"
                 >
                     Start Shopping <ArrowRight className="w-4 h-4" />
                 </Link>

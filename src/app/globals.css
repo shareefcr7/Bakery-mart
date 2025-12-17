@@ -2,13 +2,13 @@
 
 @layer base {
   :root {
-    --background: 126 8 6;
-    /* #7E0806 Deep Brand Red */
+    --background: 220 38 38;
+    /* #DC2626 Standard Brand Red */
     --foreground: 255 255 255;
     /* #FFFFFF White Text for contrast */
 
-    --primary: 126 8 6;
-    /* #7E0806 Deep Brand Red */
+    --primary: 220 38 38;
+    /* #DC2626 Standard Brand Red */
     --primary-foreground: 255 255 255;
 
     --secondary: 245 245 220;
