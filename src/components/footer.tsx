@@ -48,24 +48,26 @@ export function Footer() {
         <div className="border-t border-neutral-200 mt-12 pt-8 -mx-4 px-4 pb-8">
         <div className="flex items-center justify-center gap-6">
           {/* Left Logo */}
-          <Image
-            src="/footer-logo.png"
-            alt="Logo"
-            width={100}
-            height={100}
-            className="object-contain"
-          />
+          <div className="relative w-[70px] h-[70px] animate-float transform-gpu transition-transform duration-700 hover:scale-110 hover:rotate-12" style={{transformStyle: 'preserve-3d'}}>
+            <Image
+              src="/footer-logo.png"
+              alt="Logo"
+              fill
+              className="object-contain"
+            />
+          </div>
           
           <p className="text-neutral-600 text-sm">© 2025 BAKERs MART. All rights reserved.</p>
           
           {/* Right Logo */}
-          <Image
-            src="/footer-logo.png"
-            alt="Logo"
-            width={100}
-            height={100}
-            className="object-contain"
-          />
+          <div className="relative w-[70px] h-[70px] animate-float transform-gpu transition-transform duration-700 hover:scale-110 hover:-rotate-12" style={{transformStyle: 'preserve-3d', animationDelay: '0.5s'}}>
+            <Image
+              src="/footer-logo.png"
+              alt="Logo"
+              fill
+              className="object-contain"
+            />
+          </div>
         </div>
       </div>
       </div>
