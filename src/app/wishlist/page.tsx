@@ -68,15 +68,38 @@ export default function WishlistPage() {
       {/* 3rd Section: Banner Image with Golden Cream Background */}
       <div className="bg-[#f3e5b5] py-12">
         <div className="container mx-auto px-4">
-          <div className="relative w-full h-[300px] md:h-[400px] rounded-2xl overflow-hidden shadow-2xl border border-white/10">
+          <div className="flex items-center justify-center gap-8">
+            {/* Left Logo */}
+            <div className="hidden md:block w-24 h-24 relative flex-shrink-0">
               <Image
-                  src="/wishlist-new-banner.png"
-                  alt="Bakersmart Wishlist"
-                  fill
-                  className="object-contain"
-                  quality={100}
-                  priority
+                src="/section-heading-red-white.png"
+                alt="Logo"
+                fill
+                className="object-contain"
               />
+            </div>
+
+            {/* Banner Image */}
+            <div className="relative w-full max-w-4xl h-[300px] md:h-[400px] rounded-2xl overflow-hidden shadow-2xl border border-white/10">
+              <Image
+                src="/wishlist-new-banner.png"
+                alt="Bakersmart Wishlist"
+                fill
+                className="object-contain"
+                quality={100}
+                priority
+              />
+            </div>
+
+            {/* Right Logo */}
+            <div className="hidden md:block w-24 h-24 relative flex-shrink-0">
+              <Image
+                src="/section-heading-red-white.png"
+                alt="Logo"
+                fill
+                className="object-contain"
+              />
+            </div>
           </div>
         </div>
       </div>
