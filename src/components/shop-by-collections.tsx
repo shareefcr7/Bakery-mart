@@ -178,7 +178,7 @@ export function ShopByCollections() {
             >
               <Link href={item.link} className="block h-full w-full">
                 {/* Background Image */}
-                <div className="absolute inset-0 bg-gray-200 z-0">
+                <div className="absolute inset-0 bg-neutral-900 z-0">
                   <Image 
                     src={item.image} 
                     alt={item.title} 
@@ -186,7 +186,8 @@ export function ShopByCollections() {
                     className="object-cover transition-transform duration-700 group-hover:scale-110" 
                   />
                   {/* Gradient Overlay for Text Visibility */}
-                  <div className={`absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10 transition-opacity duration-300 opacity-60 group-hover:opacity-70`} />
+                  {/* Gradient Overlay for Text Visibility - Updated for Clarity */}
+                  <div className={`absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent z-10 transition-opacity duration-300 opacity-80 group-hover:opacity-90`} />
                 </div>
 
                 {/* Content Overlay */}
