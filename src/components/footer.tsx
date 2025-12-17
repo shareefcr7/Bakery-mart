@@ -38,7 +38,7 @@ export function Footer() {
             <h4 className="font-bold mb-4 text-primary-foreground">Connect</h4>
             <p className="text-primary-foreground/60 text-sm mb-4">Stay updated with our latest products and offers.</p>
             <div className="flex gap-4">
-              <Link href="#" className="text-primary-foreground/60 hover:text-white transition-colors"><Instagram className="w-5 h-5" /></Link>
+              <Link href="https://www.instagram.com/bakers__mart?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" className="text-primary-foreground/60 hover:text-white transition-colors"><Instagram className="w-5 h-5" /></Link>
               <Link href="#" className="text-primary-foreground/60 hover:text-white transition-colors"><Facebook className="w-5 h-5" /></Link>
               <Link href="#" className="text-primary-foreground/60 hover:text-white transition-colors"><Twitter className="w-5 h-5" /></Link>
             </div>
