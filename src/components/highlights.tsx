@@ -16,7 +16,7 @@ export function Highlights() {
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "20%"])
 
   return (
-    <section ref={containerRef} className="relative w-full h-[70vh] md:h-screen overflow-hidden bg-black flex items-center justify-center">
+    <section ref={containerRef} className="relative w-full h-[70vh] md:h-screen overflow-hidden bg-[#f3e5b5] flex items-center justify-center">
         <motion.div 
             style={{ scale, opacity, y }}
             initial={{ opacity: 0, scale: 1.1 }}
