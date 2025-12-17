@@ -14,6 +14,7 @@ import { AnimatedHeading } from "@/components/ui/animated-heading"
 function ProductContent() {
   const searchParams = useSearchParams()
   const initialCategory = searchParams.get("category") || "All"
+  const searchQuery = searchParams.get("search") || ""
   const [activeCategory, setActiveCategory] = useState(initialCategory)
   
   useEffect(() => {
@@ -22,9 +23,18 @@ function ProductContent() {
      }
   }, [searchParams])
 
-  const filteredProducts = activeCategory === "All" 
+  // Filter by category first
+  let filteredProducts = activeCategory === "All" 
     ? products 
     : products.filter(p => p.category === activeCategory)
+  
+  // Then filter by search query if present
+  if (searchQuery) {
+    filteredProducts = filteredProducts.filter(p => 
+      p.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      p.category.toLowerCase().includes(searchQuery.toLowerCase())
+    )
+  }
 
   return (
     <div className="container mx-auto px-4 pb-20">
@@ -52,6 +62,14 @@ function ProductContent() {
             
             {/* Product Grid */}
             <div className="flex-1">
+                {searchQuery && (
+                  <div className="mb-6 p-4 bg-[#f3e5b5]/10 border border-[#f3e5b5]/30 rounded-lg">
+                    <p className="text-[#f3e5b5]">
+                      Showing results for: <span className="font-bold">"{searchQuery}"</span>
+                      {filteredProducts.length === 0 && " - No products found"}
+                    </p>
+                  </div>
+                )}
                 <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
                     <AnimatePresence mode="popLayout">
                         {filteredProducts.map(product => (
