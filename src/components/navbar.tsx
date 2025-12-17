@@ -42,17 +42,17 @@ export function Navbar() {
     )}>
       <div className={cn(
         "container mx-auto px-4 flex items-center justify-between transition-all duration-300",
-        isScrolled ? "h-[90px]" : "h-[150px]"
+        isScrolled ? "h-[70px]" : "h-[110px]"
       )}>
         <Link href="/" className="h-full py-1 flex items-center">
           <Image 
             src="/navbar-logo-final.png" 
             alt="Bakery Mart" 
             width={300} 
-            height={140} 
+            height={100} 
             className={cn(
               "w-auto object-contain transition-all duration-300",
-              isScrolled ? "h-[70px] md:h-[90px]" : "h-[120px] md:h-[140px]"
+              isScrolled ? "h-[50px] md:h-[60px]" : "h-[70px] md:h-[90px]"
             )}
             priority
           />
