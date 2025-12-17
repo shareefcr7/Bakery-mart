@@ -24,8 +24,8 @@ export default function AboutPage() {
         </div> */}
 
         <div className="container mx-auto px-4 text-center relative z-10">
-          <AnimatedHeading title="About Us" textColor="text-[#DC2626]" />
-          <p className="text-xl text-[#DC2626]/90 mt-4 max-w-2xl mx-auto font-medium">The story behind the sweetness.</p>
+          <AnimatedHeading title="About Us" textColor="text-[#7E0806]" />
+          <p className="text-xl text-[#7E0806]/90 mt-4 max-w-2xl mx-auto font-medium">The story behind the sweetness.</p>
         </div>
       </section>
 

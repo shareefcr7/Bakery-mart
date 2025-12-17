@@ -26,8 +26,8 @@ export default function ContactPage() {
         </div> */}
 
         <div className="container mx-auto px-4 text-center relative z-10">
-          <AnimatedHeading title="Contact Us" textColor="text-[#DC2626]" />
-          <p className="text-[#DC2626]/80 mt-4 text-lg md:text-xl font-medium max-w-2xl mx-auto">We'd love to hear from you. Get in touch with us.</p>
+          <AnimatedHeading title="Contact Us" textColor="text-[#7E0806]" />
+          <p className="text-[#7E0806]/80 mt-4 text-lg md:text-xl font-medium max-w-2xl mx-auto">We'd love to hear from you. Get in touch with us.</p>
         </div>
       </section>
 
