@@ -31,7 +31,7 @@ function ProductContent() {
         <div className="flex flex-col lg:flex-row gap-8">
             {/* Sidebar Filters */}
             <div className="w-full lg:w-64 flex-shrink-0">
-                <h3 className="font-bold text-2xl mb-4 lg:mb-6 px-2 text-foreground/80 font-serif">Categories</h3>
+                <h3 className="font-bold text-2xl mb-4 lg:mb-6 px-2 text-[#7E0806] font-serif">Categories</h3>
                 <div className="flex lg:flex-col overflow-x-auto pb-4 lg:pb-0 gap-2 lg:gap-1 snap-x scrollbar-hide [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
                     {categories.map(cat => (
                         <button

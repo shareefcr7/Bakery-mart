@@ -30,11 +30,13 @@ export function Highlights() {
                 fill
                 className="object-cover object-center"
                 priority
+                quality={100}
+                sizes="100vw"
             />
         </motion.div>
         
-        {/* Premium Overlay Gradient */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/40 pointer-events-none" />
+        {/* Premium Overlay Gradient - Reduced for clarity */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/5 via-transparent to-black/20 pointer-events-none" />
 
         {/* Optional Scroll Hint for Desktop */}
         <motion.div 
