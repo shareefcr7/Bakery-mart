@@ -104,7 +104,7 @@ export default function ProductsPage() {
       
       <div className="relative py-24 mb-8 bg-white">
         <div className="container mx-auto px-4 relative z-10">
-            <AnimatedHeading title="Our Products" textColor="text-neutral-900" />
+            <AnimatedHeading title="Our Products" textColor="text-[#7E0806]" />
             <p className="text-neutral-700 max-w-2xl mx-auto text-center mt-4 text-lg">Explore our extensive collection of professional baking supplies.</p>
         </div>
       </div>
