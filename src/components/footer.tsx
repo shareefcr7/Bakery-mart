@@ -48,7 +48,7 @@ export function Footer() {
         <div className="border-t border-neutral-200 mt-12 pt-8 -mx-4 px-4 pb-8">
         <div className="flex items-center justify-center gap-6">
           {/* Left Logo */}
-          <div className="relative w-[70px] h-[70px] animate-float transform-gpu transition-transform duration-700 hover:scale-110 hover:rotate-12" style={{transformStyle: 'preserve-3d'}}>
+          <div className="relative w-[350px] h-[150px] animate-float transform-gpu transition-transform duration-700 hover:scale-110 hover:rotate-12" style={{transformStyle: 'preserve-3d'}}>
             <Image
               src="/footer-logo.png"
               alt="Logo"
@@ -60,7 +60,7 @@ export function Footer() {
           <p className="text-neutral-600 text-sm">© 2025 BAKERs MART. All rights reserved.</p>
           
           {/* Right Logo */}
-          <div className="relative w-[70px] h-[70px] animate-float transform-gpu transition-transform duration-700 hover:scale-110 hover:-rotate-12" style={{transformStyle: 'preserve-3d', animationDelay: '0.5s'}}>
+          <div className="relative w-[350px] h-[150px] animate-float transform-gpu transition-transform duration-700 hover:scale-110 hover:-rotate-12" style={{transformStyle: 'preserve-3d', animationDelay: '0.5s'}}>
             <Image
               src="/footer-logo.png"
               alt="Logo"
