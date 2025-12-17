@@ -85,17 +85,6 @@ export default function ProductsPage() {
       <Navbar />
       
       <div className="relative py-24 mb-8 bg-black">
-        {/* Background Image - Removed for Black BG request */}
-        {/* <div className="absolute inset-0 z-0">
-            <Image
-                src="/section-header-bg.png"
-                alt="Products Header"
-                fill
-                className="object-cover"
-                priority
-            />
-            <div className="absolute inset-0 bg-black/60" />
-        </div> */}
         <div className="container mx-auto px-4 relative z-10">
             <AnimatedHeading title="Our Products" textColor="text-[#f3e5b5]" />
             <p className="text-[#f3e5b5]/80 max-w-2xl mx-auto text-center mt-4 text-lg">Explore our extensive collection of professional baking supplies.</p>
