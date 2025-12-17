@@ -89,9 +89,7 @@ export function ProductCard({ product }: ProductCardProps) {
                 <span className="text-xs text-white/40 line-through decoration-white/40 mb-0.5">{originalPriceStr}</span>
                 <span className="font-bold text-xl text-[#f3e5b5]">{product.price}</span>
             </div>
-            <button className="text-[10px] font-bold text-white/60 hover:text-white uppercase tracking-wider flex items-center gap-1 transition-colors">
-                Add to Cart <span className="text-lg leading-none mb-0.5">+</span>
-            </button>
+            {/* Add to Cart removed as per request */}
         </div>
       </div>
     </motion.div>

@@ -11,7 +11,7 @@ const collections = [
     title: "Beginners Baking Tools",
     description: "Essential kit for starting your baking journey.",
     measurements: "Full Kit | Basics",
-    image: "/collection_baking_tools.png",
+    image: "/images/baking-tools.png",
     link: "/products?category=tools",
     color: "from-stone-800/80 to-stone-950/80"
   },
@@ -20,7 +20,7 @@ const collections = [
     title: "Piping Nozzles",
     description: "Create professional designs with precision.",
     measurements: "Set of 12 | Set of 24",
-    image: "/collection_piping_nozzles.png",
+    image: "/images/cutters.png",
     link: "/products?category=nozzles",
     color: "from-slate-800/80 to-slate-950/80"
   },
@@ -29,7 +29,7 @@ const collections = [
     title: "Bakewares",
     description: "Premium tins, trays, and moulds.",
     measurements: "Aluminium | Non-Stick",
-    image: "/collection_bakewares.png",
+    image: "/images/bakewares.png",
     link: "/products?category=bakewares",
     color: "from-zinc-800/80 to-zinc-950/80"
   },
@@ -38,7 +38,7 @@ const collections = [
     title: "Cake Toppers",
     description: "Add a finishing touch to your cakes.",
     measurements: "Acrylic | Gold | Custom",
-    image: "/collection_toppers.png",
+    image: "/images/theme-toppers.png",
     link: "/products?category=toppers",
     color: "from-yellow-800/80 to-yellow-950/80"
   },
@@ -47,7 +47,7 @@ const collections = [
     title: "Liners & Papers",
     description: "Quality liners for perfect cupcakes.",
     measurements: "Standard | Mini | Tulip",
-    image: "/collection_liners.png",
+    image: "/images/liners.png",
     link: "/products?category=liners",
     color: "from-teal-800/80 to-teal-950/80"
   },
@@ -56,7 +56,7 @@ const collections = [
     title: "Premium Ingredients",
     description: "Finest cocoa, vanilla, and baking essentials.",
     measurements: "Bulk | Retail Packs",
-    image: "/collection_ingredients.png",
+    image: "/images/ingredients.png",
     link: "/products?category=ingredients",
     color: "from-amber-900/80 to-yellow-950/80"
   },
@@ -65,7 +65,7 @@ const collections = [
     title: "Gel Colors",
     description: "Vibrant, concentrated colors for perfect icing.",
     measurements: "Single | Set of 10",
-    image: "/collection_gel_colors.png",
+    image: "/images/gel-colors.png",
     link: "/products?category=colors",
     color: "from-indigo-900/80 to-purple-950/80"
   },
@@ -74,7 +74,7 @@ const collections = [
     title: "Silicon Moulds",
     description: "Flexible moulds for intricate desserts.",
     measurements: "Shapes | 3D Designs",
-    image: "/collection_moulds.png",
+    image: "/images/silicone-moulds.png",
     link: "/products?category=moulds",
     color: "from-pink-800/80 to-rose-950/80"
   },
@@ -83,7 +83,7 @@ const collections = [
     title: "Packaging & Boxes",
     description: "Present your treats professionally.",
     measurements: "Boxes | Bags | Boards",
-    image: "/collection_baking_tools.png", // Placeholder until generation available
+    image: "/images/packaging-boxes.png",
     link: "/products?category=packaging",
     color: "from-brown-800/80 to-stone-950/80"
   },
@@ -92,7 +92,7 @@ const collections = [
     title: "Essence & Flavors",
     description: "Intense flavors for delicious bakes.",
     measurements: "Extracts | Emulsions",
-    image: "/collection_ingredients.png", // Placeholder until generation available
+    image: "/images/ingredients.png",
     link: "/products?category=flavors",
     color: "from-orange-800/80 to-red-950/80"
   },
@@ -101,7 +101,7 @@ const collections = [
     title: "Turn Tables & Stands",
     description: "Tools for decorating and display.",
     measurements: "Rotating | Tiered",
-    image: "/collection_bakewares.png", // Placeholder until generation available
+    image: "/images/cake-stand.png",
     link: "/products?category=stands",
     color: "from-neutral-800/80 to-neutral-950/80"
   },
@@ -110,7 +110,7 @@ const collections = [
     title: "Sprinkles & Edibles",
     description: "Fun toppings for every occasion.",
     measurements: "Confetti | Dragees",
-    image: "/collection_gel_colors.png", // Placeholder until generation available
+    image: "/images/sprinkles.png",
     link: "/products?category=sprinkles",
     color: "from-fuchsia-800/80 to-pink-950/80"
   },
@@ -119,7 +119,7 @@ const collections = [
     title: "Signature Cakes",
     description: "Our famous multi-layered masterpieces.",
     measurements: "500g | 1kg | 2kg",
-    image: "/collection_signature_cake.png",
+    image: "/images/heart-tin.png",
     link: "/products?category=signature-cakes",
     color: "from-rose-900/80 to-rose-950/80"
   },
@@ -128,7 +128,7 @@ const collections = [
     title: "Wedding Cakes",
     description: "Bespoke elegance for your dream day.",
     measurements: "2 Tier | 3 Tier | Custom",
-    image: "/collection_wedding_cake.png",
+    image: "/images/wedding-topper.png",
     link: "/products?category=wedding-cakes",
     color: "from-pink-900/80 to-purple-950/80"
   },
@@ -137,7 +137,7 @@ const collections = [
     title: "Birthday Cakes",
     description: "Fun, vibrant, and delicious celebrations.",
     measurements: "1kg | 2kg | 3kg",
-    image: "/collection_birthday_cake.png",
+    image: "/images/unicorn-topper.png",
     link: "/products?category=birthday-cakes",
     color: "from-blue-900/80 to-indigo-950/80"
   },
@@ -146,7 +146,7 @@ const collections = [
     title: "Diwali Specials",
     description: "Festive treats to light up your celebrations.",
     measurements: "Gift Boxes | Sweets",
-    image: "/collection_diwali_specials.png",
+    image: "/images/gold-sprinkles.png",
     link: "/products?category=diwali",
     color: "from-orange-800/80 to-red-950/80"
   }
@@ -183,6 +183,7 @@ export function ShopByCollections() {
                     src={item.image} 
                     alt={item.title} 
                     fill 
+                    sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
                     className="object-cover transition-transform duration-700 group-hover:scale-110" 
                   />
                   {/* Gradient Overlay for Text Visibility */}
