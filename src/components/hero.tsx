@@ -27,18 +27,19 @@ export function Hero() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 container mx-auto px-4 text-center">
+      <div className="relative z-10 container mx-auto px-4 text-center md:text-left">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2, ease: "easeOut" }}
-          className="max-w-6xl mx-auto"
+          className="max-w-6xl mx-auto md:mx-0"
         >
           {/* Main Heading */}
           {/* Main Heading - Shade In & Transparent Look */}
+          {/* Main Heading - Shade In & Transparent Look */}
           <FadeIn delay={0.4}>
             <h1 
-              className="text-5xl md:text-7xl lg:text-9xl font-bold text-white/90 mb-8 tracking-tighter leading-[0.9] drop-shadow-2xl mix-blend-overlay"
+              className="text-4xl md:text-6xl lg:text-8xl font-bold text-white/90 mb-8 tracking-tighter leading-[0.9] drop-shadow-2xl mix-blend-overlay"
             >
               Taste the <span className="italic text-transparent bg-clip-text bg-gradient-to-r from-[#d4af37] to-[#f3e5b5]" style={{ fontFamily: 'Playfair Display, serif' }}>Luxury</span> <br />
               in Every Bite
@@ -47,7 +48,7 @@ export function Hero() {
 
           <FadeIn delay={0.6}>
             <p 
-              className="text-lg md:text-2xl text-white/70 max-w-2xl mx-auto mb-12 font-light leading-relaxed"
+              className="text-lg md:text-xl text-white/70 max-w-2xl mx-auto md:mx-0 mb-12 font-light leading-relaxed"
             >
               Experience the finest selection of handcrafted cakes and pastries, 
               baked with passion and perfected for your special moments.
@@ -55,7 +56,7 @@ export function Hero() {
           </FadeIn>
           
           <motion.div 
-            className="flex flex-col sm:flex-row gap-6 justify-center items-center"
+            className="flex flex-col sm:flex-row gap-6 justify-center md:justify-start items-center"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1, duration: 0.8 }}
