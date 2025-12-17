@@ -49,7 +49,7 @@ export function Footer() {
         <div className="flex items-center justify-center gap-6">
           {/* Left Logo */}
           <Image
-            src="/section-heading-logo.png"
+            src="/footer-logo.png"
             alt="Logo"
             width={100}
             height={100}
@@ -60,7 +60,7 @@ export function Footer() {
           
           {/* Right Logo */}
           <Image
-            src="/section-heading-logo.png"
+            src="/footer-logo.png"
             alt="Logo"
             width={100}
             height={100}
