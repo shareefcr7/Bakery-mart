@@ -44,9 +44,31 @@ export function Footer() {
           </div>
         </div>
         
-        <div className="border-t border-primary-foreground/10 mt-12 pt-8 text-center text-sm text-primary-foreground/40">
-          © {new Date().getFullYear()} BAKERs MART. All rights reserved.
+        <div className="border-t border-[#f3e5b5]/10 mt-12 pt-8">
+        <div className="flex items-center justify-center gap-6">
+          {/* Left Logo */}
+          <div className="relative w-12 h-12 opacity-50 hover:opacity-100 transition-opacity">
+            <Image
+              src="/section-heading-red-white.png"
+              alt="Logo"
+              fill
+              className="object-contain"
+            />
+          </div>
+          
+          <p className="text-[#f3e5b5]/60 text-sm">© 2025 BAKERs MART. All rights reserved.</p>
+          
+          {/* Right Logo */}
+          <div className="relative w-12 h-12 opacity-50 hover:opacity-100 transition-opacity">
+            <Image
+              src="/section-heading-red-white.png"
+              alt="Logo"
+              fill
+              className="object-contain"
+            />
+          </div>
         </div>
+      </div>
       </div>
     </footer>
   )

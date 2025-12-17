@@ -53,7 +53,7 @@ export default function AboutPage() {
                  />
              </div>
              <div>
-                 <FadeIn delay={0.2}><h2 className="text-3xl font-bold mb-6 text-[#f3e5b5]">Our Story</h2></FadeIn>
+                 <FadeIn delay={0.2}><h2 className="text-3xl font-bold mb-6 text-[#7E0806]">Our Story</h2></FadeIn>
                  <FadeIn delay={0.4}>
                  <p className="text-lg text-[#f3e5b5] leading-relaxed mb-6">
                      Founded in 2024, BAKERs MART began with a simple mission: to provide professional-grade baking supplies to everyone. We noticed that high-quality tools were often inaccessible to home bakers, and we set out to bridge that gap.
