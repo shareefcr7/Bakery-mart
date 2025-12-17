@@ -16,7 +16,7 @@ export function Highlights() {
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "20%"])
 
   return (
-    <section ref={containerRef} className="relative w-full h-[60vh] md:h-screen overflow-hidden bg-black">
+    <section ref={containerRef} className="relative w-full h-[50vh] md:h-screen overflow-hidden bg-black flex items-center justify-center">
         <motion.div 
             style={{ scale, opacity, y }}
             initial={{ opacity: 0, scale: 1.1 }}
@@ -28,15 +28,15 @@ export function Highlights() {
                 src="/bakersmart-banner.jpg"
                 alt="Bakersmart Premium Collection"
                 fill
-                className="object-cover object-center"
+                className="object-contain md:object-cover object-center"
                 priority
                 quality={100}
                 sizes="100vw"
             />
         </motion.div>
         
-        {/* Premium Overlay Gradient - Reduced for clarity */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/5 via-transparent to-black/20 pointer-events-none" />
+        {/* Premium Overlay - Removed for transparent look as requested */}
+        {/* <div className="absolute inset-0 bg-gradient-to-b from-black/5 via-transparent to-black/20 pointer-events-none" /> */}
 
         {/* Optional Scroll Hint for Desktop */}
         <motion.div 
