@@ -9,68 +9,67 @@ import { FadeIn } from "@/components/ui/fade-in"
 
 export function Hero() {
   return (
-    <section className="relative w-full min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image with Parallax-like feel */}
+    <section className="relative w-full min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-neutral-900 via-stone-900 to-neutral-950">
+      {/* Background Image - 8K Premium */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/hero-bg-new.jpg"
-          alt="Premium Red Velvet Cake"
+          src="/hero-bg-premium-red.jpg"
+          alt="Premium Cake Showcase"
           fill
           className="object-cover scale-105 animate-slow-zoom" 
           priority
+          quality={100}
         />
-        {/* Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/80" />
-        
-
+        {/* Premium Gradient Overlay - Optimized for text readability */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/50 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60" />
       </div>
 
-      {/* Content */}
-      <div className="relative z-10 container mx-auto px-4 text-center md:text-left h-full flex flex-col justify-end pb-20">
+
+
+      {/* Content - Optimized Text Position */}
+      <div className="relative z-10 container mx-auto px-4 h-full flex items-center">
         <motion.div
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1.2, ease: "easeOut" }}
-          className="max-w-3xl mx-auto md:mx-0 md:pl-8 lg:pl-16 pt-12"
+          transition={{ duration: 1.2, ease: "easeOut", delay: 0.3 }}
+          className="max-w-2xl ml-0 md:ml-8 lg:ml-16 mt-24"
         >
-          {/* Main Heading */}
-          {/* Main Heading Removed */}
 
-          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 tracking-wide drop-shadow-lg">
-            Premium Bakery
-          </h2>
 
-          <FadeIn delay={0.6}>
-            <p 
-              className="text-base md:text-lg text-white/90 max-w-xl mx-auto md:mx-0 mb-8 font-light leading-relaxed drop-shadow-md"
-            >
+          <FadeIn delay={0.8}>
+            <div className="h-1 w-24 bg-gradient-to-r from-[#7E0806] to-amber-600 rounded-full mb-8 shadow-lg shadow-[#7E0806]/50" />
+          </FadeIn>
+
+          <FadeIn delay={0.9}>
+            <p className="text-lg md:text-xl text-white/90 max-w-xl mb-10 font-light leading-relaxed drop-shadow-lg">
               Experience the finest selection of handcrafted cakes and pastries, 
               baked with passion and perfected for your special moments.
             </p>
           </FadeIn>
           
           <motion.div 
-            className="flex flex-col sm:flex-row gap-6 justify-center md:justify-start items-center mt-8"
+            className="flex flex-col sm:flex-row gap-5 items-start"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1, duration: 0.8 }}
+            transition={{ delay: 1.1, duration: 0.8 }}
           >
             <Link 
               href="/products" 
-              className="group relative px-10 py-4 bg-[#7E0806] text-white font-bold text-lg rounded-full overflow-hidden shadow-lg shadow-[#7E0806]/30 transition-all hover:scale-105 hover:shadow-[#7E0806]/50 w-full sm:w-auto"
+              className="group relative px-12 py-5 bg-gradient-to-r from-[#7E0806] to-[#9a1a18] text-white font-bold text-lg rounded-full overflow-hidden shadow-2xl shadow-[#7E0806]/40 transition-all hover:scale-105 hover:shadow-[#7E0806]/60 border border-white/10"
             >
-              <span className="relative z-10 flex items-center justify-center gap-2">
-                Explore Menu
-                <svg className="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+              <span className="relative z-10 flex items-center justify-center gap-3">
+                Explore Collection
+                <svg className="w-5 h-5 transition-transform group-hover:translate-x-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
               </span>
-              <div className="absolute inset-0 bg-gradient-to-r from-[#8a1c2e] to-[#7E0806] opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="absolute inset-0 bg-gradient-to-r from-[#9a1a18] to-[#7E0806] opacity-0 group-hover:opacity-100 transition-opacity" />
             </Link>
             
             <Link 
               href="/about" 
-              className="px-10 py-4 bg-transparent border border-white/40 text-white font-semibold text-lg rounded-full hover:bg-white/10 hover:border-white/80 transition-all backdrop-blur-sm w-full sm:w-auto"
+              className="px-12 py-5 bg-white/5 border-2 border-white/30 text-white font-semibold text-lg rounded-full hover:bg-white/15 hover:border-white/60 transition-all backdrop-blur-md shadow-xl"
             >
-              Our Heritage
+              Our Story
             </Link>
           </motion.div>
         </motion.div>

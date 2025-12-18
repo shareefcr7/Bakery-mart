@@ -12,7 +12,7 @@ const collections = [
     description: "Essential kit for starting your baking journey.",
     measurements: "Full Kit | Basics",
     image: "/images/baking-tools.png",
-    link: "/products?category=tools",
+    link: "/products?category=Baking Tools",
     color: "from-stone-800/80 to-stone-950/80"
   },
   {
@@ -21,7 +21,7 @@ const collections = [
     description: "Create professional designs with precision.",
     measurements: "Set of 12 | Set of 24",
     image: "/images/cutters.png",
-    link: "/products?category=nozzles",
+    link: "/products?category=Piping Nozzles",
     color: "from-slate-800/80 to-slate-950/80"
   },
   {
@@ -30,7 +30,7 @@ const collections = [
     description: "Premium tins, trays, and moulds.",
     measurements: "Aluminium | Non-Stick",
     image: "/images/bakewares.png",
-    link: "/products?category=bakewares",
+    link: "/products?category=Bakewares",
     color: "from-zinc-800/80 to-zinc-950/80"
   },
   {
@@ -39,7 +39,7 @@ const collections = [
     description: "Add a finishing touch to your cakes.",
     measurements: "Acrylic | Gold | Custom",
     image: "/images/theme-toppers.png",
-    link: "/products?category=toppers",
+    link: "/products?category=Theme Toppers",
     color: "from-yellow-800/80 to-yellow-950/80"
   },
   {
@@ -48,7 +48,7 @@ const collections = [
     description: "Quality liners for perfect cupcakes.",
     measurements: "Standard | Mini | Tulip",
     image: "/images/liners.png",
-    link: "/products?category=liners",
+    link: "/products?category=Liners & Papers",
     color: "from-teal-800/80 to-teal-950/80"
   },
   {
@@ -57,7 +57,7 @@ const collections = [
     description: "Finest cocoa, vanilla, and baking essentials.",
     measurements: "Bulk | Retail Packs",
     image: "/images/ingredients.png",
-    link: "/products?category=ingredients",
+    link: "/products?category=Ingredients",
     color: "from-amber-900/80 to-yellow-950/80"
   },
   {
@@ -66,7 +66,7 @@ const collections = [
     description: "Vibrant, concentrated colors for perfect icing.",
     measurements: "Single | Set of 10",
     image: "/images/gel-colors.png",
-    link: "/products?category=colors",
+    link: "/products?category=Gel Colors",
     color: "from-indigo-900/80 to-purple-950/80"
   },
   {
@@ -75,7 +75,7 @@ const collections = [
     description: "Flexible moulds for intricate desserts.",
     measurements: "Shapes | 3D Designs",
     image: "/images/silicone-moulds.png",
-    link: "/products?category=moulds",
+    link: "/products?category=Silicone Moulds",
     color: "from-pink-800/80 to-rose-950/80"
   },
   {
@@ -84,7 +84,7 @@ const collections = [
     description: "Present your treats professionally.",
     measurements: "Boxes | Bags | Boards",
     image: "/images/packaging-boxes.png",
-    link: "/products?category=packaging",
+    link: "/products?category=Packaging & Boxes",
     color: "from-brown-800/80 to-stone-950/80"
   },
   {
@@ -93,7 +93,7 @@ const collections = [
     description: "Intense flavors for delicious bakes.",
     measurements: "Extracts | Emulsions",
     image: "/images/ingredients.png",
-    link: "/products?category=flavors",
+    link: "/products?category=Ingredients",
     color: "from-orange-800/80 to-red-950/80"
   },
   {
@@ -102,7 +102,7 @@ const collections = [
     description: "Tools for decorating and display.",
     measurements: "Rotating | Tiered",
     image: "/images/cake-stand.png",
-    link: "/products?category=stands",
+    link: "/products?category=Display Stands",
     color: "from-neutral-800/80 to-neutral-950/80"
   },
   {
@@ -111,7 +111,7 @@ const collections = [
     description: "Fun toppings for every occasion.",
     measurements: "Confetti | Dragees",
     image: "/images/sprinkles.png",
-    link: "/products?category=sprinkles",
+    link: "/products?category=Sprinkles",
     color: "from-fuchsia-800/80 to-pink-950/80"
   },
   {
@@ -120,7 +120,7 @@ const collections = [
     description: "Our famous multi-layered masterpieces.",
     measurements: "500g | 1kg | 2kg",
     image: "/images/heart-tin.png",
-    link: "/products?category=signature-cakes",
+    link: "/products?category=Cake Tins",
     color: "from-rose-900/80 to-rose-950/80"
   },
   {
@@ -129,7 +129,7 @@ const collections = [
     description: "Bespoke elegance for your dream day.",
     measurements: "2 Tier | 3 Tier | Custom",
     image: "/images/wedding-topper.png",
-    link: "/products?category=wedding-cakes",
+    link: "/products?category=Theme Toppers",
     color: "from-pink-900/80 to-purple-950/80"
   },
   {
@@ -138,7 +138,7 @@ const collections = [
     description: "Fun, vibrant, and delicious celebrations.",
     measurements: "1kg | 2kg | 3kg",
     image: "/images/unicorn-topper.png",
-    link: "/products?category=birthday-cakes",
+    link: "/products?category=Theme Toppers",
     color: "from-blue-900/80 to-indigo-950/80"
   },
   {
@@ -147,7 +147,7 @@ const collections = [
     description: "Festive treats to light up your celebrations.",
     measurements: "Gift Boxes | Sweets",
     image: "/images/gold-sprinkles.png",
-    link: "/products?category=diwali",
+    link: "/products?category=Sprinkles",
     color: "from-orange-800/80 to-red-950/80"
   }
 ]
@@ -159,29 +159,7 @@ export function ShopByCollections() {
       <div className="bg-black py-16 overflow-hidden">
         <div className="container mx-auto px-4">
           <div className="text-center relative">
-            {/* Left Logo */}
-            <div className="absolute left-0 top-1/2 -translate-y-1/2 hidden lg:block animate-float">
-              <div className="relative w-[148px] h-[148px] transform-gpu transition-transform duration-700 hover:scale-110 hover:rotate-12" style={{transformStyle: 'preserve-3d'}}>
-                <Image
-                  src="/section-heading-red-white.png"
-                  alt="Cake Decoration"
-                  fill
-                  className="object-contain opacity-80"
-                />
-              </div>
-            </div>
-            
-            {/* Right Logo */}
-            <div className="absolute right-0 top-1/2 -translate-y-1/2 hidden lg:block animate-float" style={{animationDelay: '0.5s'}}>
-              <div className="relative w-[148px] h-[148px] transform-gpu transition-transform duration-700 hover:scale-110 hover:-rotate-12" style={{transformStyle: 'preserve-3d'}}>
-                <Image
-                  src="/section-heading-red-white.png"
-                  alt="Cake Decoration"
-                  fill
-                  className="object-contain opacity-80"
-                />
-              </div>
-            </div>
+
 
             <AnimatedHeading 
               title="Shop By Collections" 
