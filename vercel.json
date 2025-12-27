@@ -5,6 +5,11 @@
       "source": "/admin",
       "destination": "/admin/login",
       "permanent": false
+    },
+    {
+      "source": "/dashboard/admin",
+      "destination": "/admin/login",
+      "permanent": false
     }
   ]
 }
