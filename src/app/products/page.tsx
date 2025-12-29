@@ -4,7 +4,7 @@ import { useState, useEffect, Suspense } from "react"
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 import { ProductCard } from "@/components/product-card"
-import { categories, products } from "@/lib/data"
+import { categories, Product } from "@/lib/data"
 import { useSearchParams } from "next/navigation"
 import { AnimatePresence, motion } from "framer-motion"
 import { cn } from "@/lib/utils"
@@ -16,6 +16,22 @@ function ProductContent() {
   const initialCategory = searchParams.get("category") || "All"
   const searchQuery = searchParams.get("search") || ""
   const [activeCategory, setActiveCategory] = useState(initialCategory)
+  
+  const [products, setProducts] = useState<Product[]>([])
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    fetch('/api/products')
+      .then(res => res.json())
+      .then(data => {
+        setProducts(data)
+        setLoading(false)
+      })
+      .catch(err => {
+        console.error("Failed to fetch products", err)
+        setLoading(false)
+      })
+  }, [])
   
   useEffect(() => {
      if(searchParams.get("category")) {
@@ -34,6 +50,10 @@ function ProductContent() {
       p.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
       p.category.toLowerCase().includes(searchQuery.toLowerCase())
     )
+  }
+
+  if (loading) {
+      return <div className="text-center py-20 text-muted-foreground">Loading products...</div>
   }
 
   return (
