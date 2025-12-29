@@ -51,10 +51,12 @@ export default function ProductsPage() {
         setProducts(prev => prev.filter(p => p.id !== id));
         router.refresh();
       } else {
-        alert('Failed to delete');
+        const data = await res.json().catch(() => ({}));
+        alert(data.error || 'Failed to delete: Server error');
       }
     } catch (err) {
-      alert('An error occurred');
+      console.error(err);
+      alert('An error occurred while deleting');
     }
   };
 
