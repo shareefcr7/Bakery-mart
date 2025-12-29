@@ -23,7 +23,7 @@ export default function NewProductPage() {
     image: '',
     images: [] as string[],
     isBestSeller: false,
-    isNew: false
+    isNewProduct: false
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const router = useRouter();
@@ -163,8 +163,8 @@ export default function NewProductPage() {
                  <label className="flex items-center gap-2 cursor-pointer">
                    <input 
                       type="checkbox"
-                      checked={formData.isNew}
-                      onChange={e => setFormData({...formData, isNew: e.target.checked})}
+                      checked={formData.isNewProduct}
+                      onChange={e => setFormData({...formData, isNewProduct: e.target.checked})}
                       className="w-4 h-4 rounded text-red-600 focus:ring-red-500 border-zinc-300"
                    />
                    <span className="text-sm text-zinc-700 dark:text-zinc-300">New Arrival</span>

@@ -7,7 +7,7 @@ export interface Product {
   category: string;
   image: string;
   isBestSeller?: boolean;
-  isNew?: boolean;
+  isNewProduct?: boolean;
 }
 
 export const categoryData = [
@@ -238,7 +238,7 @@ export const products: Product[] = [
     price: "$25.00",
     category: "Packaging & Boxes",
     image: "/images/packaging-boxes.png",
-    isNew: true
+    isNewProduct: true
   },
   {
     id: "25",
@@ -247,7 +247,7 @@ export const products: Product[] = [
     price: "$14.99",
     category: "Silicone Moulds",
     image: "/images/silicone-moulds.png",
-    isNew: true
+    isNewProduct: true
   },
   {
     id: "26",
@@ -265,7 +265,7 @@ export const products: Product[] = [
     price: "$22.50",
     category: "Artificial Flowers",
     image: "/images/artificial-flowers.png",
-    isNew: true
+    isNewProduct: true
   },
   {
     id: "28",

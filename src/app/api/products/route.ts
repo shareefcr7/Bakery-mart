@@ -29,7 +29,7 @@ export async function POST(request: Request) {
       image: body.image || '/images/placeholder.png', // Fallback image
       images: body.images || [],
       isBestSeller: body.isBestSeller || false,
-      isNew: body.isNew || false,
+      isNewProduct: body.isNewProduct || false,
     };
 
     const added = await addProduct(newProduct);
