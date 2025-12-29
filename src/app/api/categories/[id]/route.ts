@@ -9,7 +9,7 @@ export async function PUT(
   try {
     const { id } = await params;
     const body = await request.json();
-    const updated = updateCategory(id, body);
+    const updated = await updateCategory(id, body);
     
     if (!updated) {
       return NextResponse.json({ error: 'Category not found' }, { status: 404 });
@@ -27,7 +27,7 @@ export async function DELETE(
 ) {
   try {
     const { id } = await params;
-    const deleted = deleteCategory(id);
+    const deleted = await deleteCategory(id);
     
     if (!deleted) {
       return NextResponse.json({ error: 'Category not found' }, { status: 404 });

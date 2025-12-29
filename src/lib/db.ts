@@ -1,145 +1,110 @@
-
-import fs from 'fs';
-import path from 'path';
+import dbConnect from './mongodb';
+import Product, { IProduct } from '@/models/Product';
+import Category, { ICategory } from '@/models/Category';
 import { products as initialProducts, categoryData as initialCategories } from './data';
 
-const DB_PATH = path.join(process.cwd(), 'src', 'data', 'db.json');
+// Types
+export type { IProduct as Product } from '@/models/Product'; // Re-export for compatibility
+export type { ICategory as Category } from '@/models/Category';
 
-export interface Product {
-  id: string;
-  name: string;
-  description: string;
-  price: string;
-  category: string;
-  image: string;
-  images?: string[];
-  isBestSeller?: boolean;
-  isNew?: boolean;
-}
-
-export interface Category {
-  name: string;
-  image: string;
-  id?: string; // Adding ID for easier management, though name is unique in original data
-}
-
-export interface DBData {
-  products: Product[];
-  categories: Category[];
-}
-
-export function getDB(): DBData {
-  if (!fs.existsSync(DB_PATH)) {
-    // Seed data
-    const seedData: DBData = {
-      products: initialProducts,
-      categories: initialCategories.map(c => ({ ...c, id: c.name.toLowerCase().replace(/ /g, '-') })),
-    };
-    fs.writeFileSync(DB_PATH, JSON.stringify(seedData, null, 2));
-    return seedData;
-  }
+// Helper to ensure DB is connected and seeded
+async function initDB() {
+  await dbConnect();
   
-  try {
-    const fileContent = fs.readFileSync(DB_PATH, 'utf-8');
-    return JSON.parse(fileContent);
-  } catch (error) {
-    console.error("Error reading DB:", error);
-    return { products: [], categories: [] };
+  // Seed Categories if empty
+  const catCount = await Category.countDocuments();
+  if (catCount === 0) {
+    console.log('Seeding Categories...');
+    const categoriesToInsert = initialCategories.map(c => ({
+      ...c,
+      id: c.name.toLowerCase().replace(/ /g, '-'), // Generate ID if needed
+    }));
+    await Category.insertMany(categoriesToInsert);
+  }
+
+  // Seed Products if empty
+  const prodCount = await Product.countDocuments();
+  if (prodCount === 0) {
+    console.log('Seeding Products...');
+    await Product.insertMany(initialProducts);
   }
 }
 
-export function saveDB(data: DBData) {
-  fs.writeFileSync(DB_PATH, JSON.stringify(data, null, 2));
+// Products
+export async function getProducts() {
+  await initDB();
+  const products = await Product.find({}).sort({ createdAt: -1 });
+  return JSON.parse(JSON.stringify(products)); // Serialize for Next.js
 }
 
-// Helper functions
-export function getProducts() {
-  return getDB().products;
+export async function getProductById(id: string) {
+  await initDB();
+  const product = await Product.findOne({ id });
+  return product ? JSON.parse(JSON.stringify(product)) : null;
 }
 
-export function getProductById(id: string) {
-  return getDB().products.find(p => p.id === id);
+export async function addProduct(productData: any) {
+  await initDB();
+  const newProduct = new Product(productData);
+  await newProduct.save();
+  return JSON.parse(JSON.stringify(newProduct));
 }
 
-export function addProduct(product: Product) {
-  const db = getDB();
-  db.products.push(product);
-  saveDB(db);
-  return product;
+export async function updateProduct(id: string, updates: any) {
+  await initDB();
+  const updated = await Product.findOneAndUpdate({ id }, updates, { new: true });
+  return updated ? JSON.parse(JSON.stringify(updated)) : null;
 }
 
-export function updateProduct(id: string, updates: Partial<Product>) {
-  const db = getDB();
-  const index = db.products.findIndex(p => p.id === id);
-  if (index !== -1) {
-    db.products[index] = { ...db.products[index], ...updates };
-    saveDB(db);
-    return db.products[index];
-  }
-  return null;
+export async function deleteProduct(id: string) {
+  await initDB();
+  const deleted = await Product.findOneAndDelete({ id });
+  return deleted ? JSON.parse(JSON.stringify(deleted)) : null;
 }
 
-export function deleteProduct(id: string) {
-  const db = getDB();
-  const index = db.products.findIndex(p => p.id === id);
-  if (index !== -1) {
-    const deleted = db.products.splice(index, 1);
-    saveDB(db);
-    return deleted[0];
-  }
-  return null;
+// Categories
+export async function getCategories() {
+  await initDB();
+  const categories = await Category.find({});
+  return JSON.parse(JSON.stringify(categories));
 }
 
-export function getCategories() {
-  return getDB().categories;
-}
-
-export function addCategory(category: Category) {
-  const db = getDB();
-  // Check for duplicates
-  if (db.categories.some(c => c.name.toLowerCase() === category.name.toLowerCase())) {
-     throw new Error("Category already exists");
-  }
+export async function addCategory(categoryData: any) {
+  await initDB();
   
-  if (!category.id) {
-      category.id = category.name.toLowerCase().replace(/ /g, '-');
+  // Custom duplicate check (optional since we have initDB handling uniqueness mostly)
+  const existing = await Category.findOne({ name: { $regex: new RegExp(`^${categoryData.name}$`, 'i') } });
+  if (existing) {
+    throw new Error("Category already exists");
   }
-  
-  db.categories.push(category);
-  saveDB(db);
-  return category;
+
+  if (!categoryData.id) {
+    categoryData.id = categoryData.name.toLowerCase().replace(/ /g, '-');
+  }
+
+  const newCategory = new Category(categoryData);
+  await newCategory.save();
+  return JSON.parse(JSON.stringify(newCategory));
 }
 
-export function updateCategory(id: string, updates: Partial<Category>) {
-  const db = getDB();
-  const index = db.categories.findIndex(c => c.id === id);
-  if (index !== -1) {
-      // If name changes, we might want to update products too, but for now let's keep it simple
-    db.categories[index] = { ...db.categories[index], ...updates };
-    saveDB(db);
-    return db.categories[index];
-  }
-  return null;
+export async function updateCategory(id: string, updates: any) {
+  await initDB();
+  const updated = await Category.findOneAndUpdate({ id }, updates, { new: true });
+  return updated ? JSON.parse(JSON.stringify(updated)) : null;
 }
 
-export function deleteCategory(id: string) {
-  const db = getDB();
+export async function deleteCategory(id: string) {
+  await initDB();
   
-  // Check if any product uses this category
-  // We need to resolve the category name from ID first because products store category name
-  const categoryToRemove = db.categories.find(c => c.id === id);
+  // Check usage
+  const categoryToRemove = await Category.findOne({ id });
   if (!categoryToRemove) return null;
 
-  const isUsed = db.products.some(p => p.category === categoryToRemove.name);
+  const isUsed = await Product.exists({ category: categoryToRemove.name });
   if (isUsed) {
     throw new Error(`Cannot delete category "${categoryToRemove.name}" because it is used by one or more products.`);
   }
 
-  const index = db.categories.findIndex(c => c.id === id);
-  if (index !== -1) {
-    const deleted = db.categories.splice(index, 1);
-    saveDB(db);
-    return deleted[0];
-  }
-  return null;
+  const deleted = await Category.findOneAndDelete({ id });
+  return deleted ? JSON.parse(JSON.stringify(deleted)) : null;
 }

@@ -1,29 +1,36 @@
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
-import { products } from "@/lib/data"
+// import { products } from "@/lib/data" // Removed static import
+import { getProductById, getProducts } from "@/lib/db"
 import { notFound } from "next/navigation"
 import Image from "next/image"
 import Link from "next/link"
 import { Check, Mail, Share2 } from "lucide-react"
 import { ProductCard } from "@/components/product-card"
 
-// This is required for static site generation with dynamic routes
+// Removing generateStaticParams to allow dynamic rendering for new database items
+/*
 export function generateStaticParams() {
   return products.map((product) => ({
     id: product.id,
   }))
 }
+*/
 
 export default async function ProductPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params
-  const product = products.find((p) => p.id === id)
+  const product = await getProductById(id)
 
   if (!product) {
     notFound()
   }
 
-  const relatedProducts = products
-    .filter((p) => p.category === product.category && p.id !== product.id)
+  // Fetch all products to find related ones (in a real app, use a DB query)
+  const allProducts = await getProducts()
+  
+  // @ts-ignore
+  const relatedProducts = allProducts
+    .filter((p: any) => p.category === product.category && p.id !== product.id)
     .slice(0, 5)
 
   return (
