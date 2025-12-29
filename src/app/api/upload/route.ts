@@ -1,8 +1,7 @@
 
 import { NextResponse } from 'next/server';
-import { writeFile } from 'fs/promises';
-import { join } from 'path';
-import { mkdir } from 'fs/promises';
+import cloudinary from '@/lib/cloudinary';
+import { UploadApiResponse, UploadApiErrorResponse } from 'cloudinary';
 
 export async function POST(request: Request) {
   try {
@@ -16,24 +15,27 @@ export async function POST(request: Request) {
     const bytes = await file.arrayBuffer();
     const buffer = Buffer.from(bytes);
 
-    // Ensure upload directory exists
-    const uploadDir = join(process.cwd(), 'public', 'uploads');
-    
-    // We check if directory exists, if not create it
-    // Note: mkdir with recursive: true won't throw if it exists
-    await mkdir(uploadDir, { recursive: true });
+    return new Promise((resolve, reject) => {
+      const uploadStream = cloudinary.uploader.upload_stream(
+        {
+          folder: 'bakery-mart/products',
+        },
+        (error: UploadApiErrorResponse | undefined, result: UploadApiResponse | undefined) => {
+          if (error) {
+            console.error('Cloudinary upload error:', error);
+            reject(NextResponse.json({ error: 'Upload failed' }, { status: 500 }));
+          } else {
+            resolve(
+              NextResponse.json({
+                url: result?.secure_url,
+                success: true,
+              })
+            );
+          }
+        }
+      );
 
-    // Sanitize filename and timestamp to avoid collisions
-    const timestamp = Date.now();
-    const sanitizedFilename = file.name.replace(/[^a-zA-Z0-9.-]/g, '_');
-    const filename = `${timestamp}-${sanitizedFilename}`;
-    const filePath = join(uploadDir, filename);
-
-    await writeFile(filePath, buffer);
-    
-    return NextResponse.json({ 
-        url: `/uploads/${filename}`,
-        success: true 
+      uploadStream.end(buffer);
     });
 
   } catch (error) {

@@ -36,15 +36,15 @@ export function Navbar() {
 
   return (
     <nav className="sticky top-0 z-50 w-full bg-[#7E0806] border-b border-white/20 shadow-md">
-      <div className="container mx-auto px-4 h-24 flex items-center justify-between">
+      <div className="container mx-auto px-4 py-4 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center">
           <Image 
             src={logo}
             alt="Bakers Mart"
-            width={600}
-            height={120}
-            className="h-20 w-auto object-contain"
+            width={670}
+            height={140}
+            className="h-[80px] md:h-[80px] w-auto object-contain"
             priority
           />
         </Link>
