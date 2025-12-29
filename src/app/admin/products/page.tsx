@@ -116,13 +116,28 @@ export default function ProductsPage() {
                     <td className="px-6 py-4">
                       <div className="flex items-center gap-3">
                          <div className="relative w-12 h-12 rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 flex-shrink-0">
-                          {product.image && (
+                          {product.image ? (
                             <Image 
                               src={product.image} 
                               alt={product.name} 
                               fill 
                               className="object-cover"
+                              onError={(e) => {
+                                // Fallback to placeholder on error
+                                const target = e.target as HTMLImageElement;
+                                target.src = '/images/placeholder.png'; // Make sure this exists, or use a data URI
+                                target.srcset = '';
+                              }}
                             />
+                          ) : (
+                            <div className="w-full h-full flex items-center justify-center text-zinc-400">
+                               <Image 
+                                src="/images/placeholder.png"
+                                alt="No image"
+                                fill
+                                className="object-cover opacity-50"
+                               />
+                            </div>
                           )}
                         </div>
                         <span className="font-medium text-zinc-900 dark:text-white line-clamp-2">
