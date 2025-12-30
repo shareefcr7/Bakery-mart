@@ -71,15 +71,25 @@ export async function POST(request: Request) {
     const uniqueFilename = `${uniqueSuffix}-${filename}`;
     const filepath = path.join(uploadsDir, uniqueFilename);
 
-    await writeFile(filepath, buffer);
+    try {
+        await writeFile(filepath, buffer);
+    } catch (fsError: any) {
+        console.error('Local write error:', fsError);
+        if (fsError.code === 'EROFS' || fsError.code === 'EACCES') {
+            return NextResponse.json({ 
+                error: 'VERCEL ERROR: Read-only file system. This means Cloudinary keys are missing or incorrect, so the code tried to save locally and failed. Check your Vercel Environment Variables.' 
+            }, { status: 500 });
+        }
+        throw fsError;
+    }
 
     return NextResponse.json({
       url: `/uploads/${uniqueFilename}`,
       success: true,
     });
 
-  } catch (error) {
+  } catch (error: any) {
     console.error('Upload error:', error);
-    return NextResponse.json({ error: 'Upload failed' }, { status: 500 });
+    return NextResponse.json({ error: error.message || 'Upload failed' }, { status: 500 });
   }
 }
