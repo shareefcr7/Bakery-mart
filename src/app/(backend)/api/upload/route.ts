@@ -22,6 +22,13 @@ export async function POST(request: Request) {
       process.env.CLOUDINARY_API_KEY && 
       process.env.CLOUDINARY_API_SECRET;
 
+    // CRITICAL: Vercel (Production) requires Cloudinary. Local storage is read-only or ephemeral.
+    if (process.env.NODE_ENV === 'production' && !hasCloudinaryKeys) {
+        return NextResponse.json({ 
+            error: 'MISSING CLOUDINARY KEYS. Please add NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME, CLOUDINARY_API_KEY, and CLOUDINARY_API_SECRET to Vercel settings.' 
+        }, { status: 500 });
+    }
+
     if (hasCloudinaryKeys) {
       try {
         const result = await new Promise<UploadApiResponse>((resolve, reject) => {
