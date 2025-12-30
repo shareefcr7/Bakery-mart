@@ -33,13 +33,13 @@ async function initDB() {
 // Products
 export async function getProducts() {
   await initDB();
-  const products = await Product.find({}).sort({ createdAt: -1 });
-  return JSON.parse(JSON.stringify(products)); // Serialize for Next.js
+  const products = await Product.find({}).sort({ createdAt: -1 }).lean();
+  return JSON.parse(JSON.stringify(products));
 }
 
 export async function getProductById(id: string) {
   await initDB();
-  const product = await Product.findOne({ id });
+  const product = await Product.findOne({ id }).lean();
   return product ? JSON.parse(JSON.stringify(product)) : null;
 }
 

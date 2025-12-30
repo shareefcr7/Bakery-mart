@@ -4,8 +4,6 @@ import Image from "next/image"
 import Link from "next/link"
 import { motion } from "framer-motion"
 import { Product } from "@/lib/data"
-import { Heart } from "lucide-react"
-import { useWishlist } from "@/context/wishlist-context"
 import { cn } from "@/lib/utils"
 import { useState } from "react"
 
@@ -15,8 +13,6 @@ interface ProductCardProps {
 }
 
 export function ProductCard({ product, variant = "dark", priority = false }: ProductCardProps & { priority?: boolean }) {
-  const { isInWishlist, toggleWishlist } = useWishlist()
-  const isWishlisted = isInWishlist(product.id)
   const [imageLoaded, setImageLoaded] = useState(false)
   
   // Calculate discount percentage if original price existed (simulated)
@@ -67,22 +63,6 @@ export function ProductCard({ product, variant = "dark", priority = false }: Pro
             isLight ? "bg-black/0 group-hover:bg-black/5" : "bg-black/0 group-hover:bg-black/20"
         )} />
         
-        {/* Wishlist Button */}
-        <button 
-            onClick={(e) => {
-                e.preventDefault()
-                toggleWishlist(product)
-            }}
-            className={cn(
-                "absolute top-3 right-3 p-2.5 rounded-full backdrop-blur-md border shadow-lg transition-all duration-300 z-10 group/btn hover:scale-110 active:scale-95",
-                isLight
-                    ? "bg-white/80 border-neutral-200 hover:bg-white text-neutral-600 hover:text-[#7E0806]"
-                    : "bg-black/40 border-white/10 hover:bg-white text-white hover:text-[#7E0806]"
-            )}
-        >
-            <Heart className={cn("w-4 h-4 transition-colors duration-300", isWishlisted ? "fill-[#7E0806] text-[#7E0806]" : "group-hover/btn:text-[#7E0806]")} />
-        </button>
-
         {/* Hover Overlay Actions */}
         <div className={cn(
             "absolute inset-x-0 bottom-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-500 cubic-bezier(0.16, 1, 0.3, 1) flex gap-3 justify-center items-end pb-6",
