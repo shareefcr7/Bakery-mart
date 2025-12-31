@@ -78,7 +78,7 @@ export default function EditProductPage({ params }: { params: Promise<{ id: stri
       } else {
         alert('Failed to update product');
       }
-    } catch (_error) {
+    } catch {
       alert('An error occurred');
     } finally {
       setIsSubmitting(false);

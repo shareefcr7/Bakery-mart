@@ -30,7 +30,7 @@ export default function CategoriesPage() {
         const data = await res.json();
         setCategories(data);
       }
-    } catch (_err) {
+    } catch {
       console.error('Failed to load categories');
     } finally {
       setIsLoading(false);
@@ -52,7 +52,7 @@ export default function CategoriesPage() {
         const data = await res.json();
         alert(data.error || 'Failed to delete');
       }
-    } catch (_err) {
+    } catch {
       alert('An error occurred');
     }
   };

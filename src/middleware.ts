@@ -33,7 +33,7 @@ export default async function middleware(request: NextRequest) {
       
       await jwtVerify(session, key);
       // Valid token, allow request
-    } catch (_error) {
+    } catch {
       // Invalid token, redirect to login
       // Invalid token, clear it and redirect to login
       const response = NextResponse.redirect(new URL('/admin/login', request.url));

@@ -16,7 +16,7 @@ export async function PUT(
     }
     
     return NextResponse.json(updated);
-  } catch (_error) {
+  } catch {
     return NextResponse.json({ error: 'Failed to update category' }, { status: 500 });
   }
 }

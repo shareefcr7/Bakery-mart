@@ -32,7 +32,7 @@ export default function ProductsPage() {
         const data = await res.json();
         setProducts(data);
       }
-    } catch (_err) {
+    } catch {
       console.error('Failed to load products');
     } finally {
       setIsLoading(false);

@@ -29,7 +29,21 @@ export async function POST(request: Request) {
         }, { status: 500 });
     }
 
-    if (hasCloudinaryKeys) {
+    // Check for placeholder values which cause crashes
+    if (process.env.CLOUDINARY_API_KEY === 'your_api_key' || process.env.CLOUDINARY_API_SECRET === 'your_api_secret') {
+       console.error("Cloudinary Configuration Error: You are using placeholder API keys.");
+       // Fallback to local storage if in development, otherwise error
+       if (process.env.NODE_ENV === 'production') {
+          return NextResponse.json({ error: 'Invalid Cloudinary Configuration: Using placeholder keys.' }, { status: 500 });
+       }
+       // If dev, we can force local storage by saying hasCloudinaryKeys is false
+       // But let's actually just return an error so the user knows to fix it, 
+       // or else they might think it's working but it's not sticking.
+       // Actually, the user wants the error fixed. The fix is to use local storage if keys are bad OR tell them.
+       // Given the user request, I'll allow local fallback for now but log error.
+    }
+
+    if (hasCloudinaryKeys && process.env.CLOUDINARY_API_KEY !== 'your_api_key') {
       try {
         const result = await new Promise<UploadApiResponse>((resolve, reject) => {
           const uploadStream = cloudinary.uploader.upload_stream(
@@ -61,7 +75,7 @@ export async function POST(request: Request) {
     // Ensure uploads directory exists
     try {
       await mkdir(uploadsDir, { recursive: true });
-    } catch (_err) {
+    } catch {
       // Ignore error if directory exists
     }
 
@@ -73,9 +87,10 @@ export async function POST(request: Request) {
 
     try {
         await writeFile(filepath, buffer);
-    } catch (fsError: any) {
+    } catch (fsError: unknown) {
         console.error('Local write error:', fsError);
-        if (fsError.code === 'EROFS' || fsError.code === 'EACCES') {
+        const err = fsError as { code?: string };
+        if (err.code === 'EROFS' || err.code === 'EACCES') {
             return NextResponse.json({ 
                 error: 'VERCEL ERROR: Read-only file system. This means Cloudinary keys are missing or incorrect, so the code tried to save locally and failed. Check your Vercel Environment Variables.' 
             }, { status: 500 });
@@ -88,8 +103,9 @@ export async function POST(request: Request) {
       success: true,
     });
 
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Upload error:', error);
-    return NextResponse.json({ error: error.message || 'Upload failed' }, { status: 500 });
+    const errorMessage = error instanceof Error ? error.message : 'Upload failed';
+    return NextResponse.json({ error: errorMessage }, { status: 500 });
   }
 }
