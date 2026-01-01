@@ -1,9 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  turbopack: {
-    root: process.cwd(),
-  },
+
   images: {
     qualities: [100, 75], // Added quality configuration as requested
     remotePatterns: [
