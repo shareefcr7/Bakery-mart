@@ -1,34 +1,29 @@
 "use client"
 
+
 import { useState, useEffect } from "react"
 import { ProductCard } from "@/components/product-card"
-import { categories, Product } from "@/lib/data"
-import { useSearchParams } from "next/navigation" // Keep using navigation for reading params
+import { Product } from "@/lib/data" // Keep Product type for now if needed, or switch to IProduct
+import { IProduct, ICategory } from "@/lib/db"
+import { useSearchParams } from "next/navigation" 
 import { AnimatePresence, motion } from "framer-motion"
 import { cn } from "@/lib/utils"
-import { Search } from "lucide-react"
+// import { Search } from "lucide-react" // Removed unused
 
 interface ProductListProps {
-  initialProducts: Product[]
+  initialProducts: IProduct[]
+  categories: ICategory[]
 }
 
-export function ProductList({ initialProducts }: ProductListProps) {
+export function ProductList({ initialProducts, categories }: ProductListProps) {
   const searchParams = useSearchParams()
   const initialCategory = searchParams.get("category") || "All"
   const searchQueryParam = searchParams.get("search") || ""
   
   const [activeCategory, setActiveCategory] = useState(initialCategory)
-  // We can manage search state locally for immediate feedback, or sync with URL.
-  // Given "searchQueryParam" comes from URL, let's treat it as initial state or derived.
-  // For simplicity and speed, we will filter based on props + local state.
-  
-  // Actually, keeping the search separate from the list component might be better if the search bar is in the navbar.
-  // But the previous code had filtering logic inside the page. 
-  // Let's assume the Navbar updates the URL, and this component reacts to it OR the props update.
-  
-  const [products] = useState<Product[]>(initialProducts)
-
  
+  const [products] = useState<IProduct[]>(initialProducts)
+
   // Update state when URL param changes
   useEffect(() => {
      setActiveCategory(initialCategory)
@@ -46,8 +41,6 @@ export function ProductList({ initialProducts }: ProductListProps) {
     )
   }
 
-  // Optimize: Memoize or use simple derived state (as above)
-  
   // Animation variants
   const container = {
     hidden: { opacity: 0 },
@@ -64,24 +57,17 @@ export function ProductList({ initialProducts }: ProductListProps) {
     show: { opacity: 1, y: 0 }
   }
 
+  // Extract category names for the sidebar buttons
+  // "All" is static, others come from DB
+  const categoryNames = ["All", ...categories.map(c => c.name)]
+
   return (
     <div className="flex flex-col lg:flex-row gap-8">
         {/* Sidebar Categories */}
         <div className="w-full lg:w-64 flex-shrink-0 flex flex-col gap-4">
             <h3 className="font-bold text-2xl px-2 text-[#7E0806] font-serif hidden lg:block">Categories</h3>
             <div className="flex lg:flex-col overflow-x-auto pb-4 lg:pb-0 gap-2 lg:gap-1 snap-x scrollbar-hide [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-                <button
-                    onClick={() => setActiveCategory("All")}
-                    className={cn(
-                        "flex-shrink-0 snap-start px-6 py-2 lg:py-3 lg:px-4 rounded-full lg:rounded-xl text-sm font-medium transition-all duration-300 border lg:border-0 lg:text-left",
-                        activeCategory === "All" 
-                            ? "bg-[#7E0806] text-white border-[#7E0806] shadow-lg shadow-red-900/20 lg:bg-[#7E0806]/10 lg:text-[#7E0806] lg:border-l-4 lg:border-l-[#7E0806] lg:shadow-none lg:rounded-l-none" 
-                            : "bg-white/5 border-white/10 text-white/60 hover:text-white hover:bg-white/10 lg:hover:bg-white/5 lg:hover:pl-6"
-                    )}
-                >
-                    All
-                </button>
-                {categories.filter(c => c !== "All").map(cat => (
+                {categoryNames.map(cat => (
                     <button
                         key={cat}
                         onClick={() => setActiveCategory(cat)}
@@ -100,15 +86,7 @@ export function ProductList({ initialProducts }: ProductListProps) {
         
         {/* Product Grid */}
         <div className="flex-1">
-            {searchQueryParam && (
-              <div className="mb-6 p-4 bg-white/5 border border-white/10 rounded-lg flex items-center gap-2 text-white/80">
-                <Search className="w-4 h-4" />
-                <p>
-                  Results for <span className="font-bold text-white">&quot;{searchQueryParam}&quot;</span>
-                  <span className="text-white/40 text-sm ml-2">({filteredProducts.length} items)</span>
-                </p>
-              </div>
-            )}
+
             
             <div className="mb-6 lg:hidden">
                  <h3 className="font-bold text-2xl text-[#7E0806] font-serif">Categories</h3>

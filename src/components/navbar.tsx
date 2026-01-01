@@ -67,39 +67,41 @@ export function Navbar() {
 
         {/* Right Icons */}
         <div className="flex items-center gap-4 h-full">
-          {/* Search */}
-          <div className="relative flex items-center">
-            {!searchOpen ? (
-              <button 
-                onClick={() => setSearchOpen(true)}
-                className="text-[#f3e5b5] hover:text-white transition-colors flex items-center justify-center" 
-                aria-label="Search Products"
-              >
-                <Search className="w-5 h-5" />
-              </button>
-            ) : (
-              <form onSubmit={handleSearch} className="flex items-center gap-2">
-                <input
-                  type="text"
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder="Search products..."
-                  className="w-48 px-3 py-1.5 text-sm rounded-md bg-white/10 border border-[#f3e5b5]/30 text-white placeholder:text-white/50 focus:outline-none focus:border-[#f3e5b5]"
-                  autoFocus
-                />
-                <button
-                  type="button"
-                  onClick={() => {
-                    setSearchOpen(false)
-                    setSearchQuery("")
-                  }}
-                  className="text-[#f3e5b5] hover:text-white flex items-center justify-center"
+          {/* Search - Only show on Product Pages */}
+          {pathname?.includes('/products') && (
+            <div className="relative flex items-center">
+              {!searchOpen ? (
+                <button 
+                  onClick={() => setSearchOpen(true)}
+                  className="text-[#f3e5b5] hover:text-white transition-colors flex items-center justify-center" 
+                  aria-label="Search Products"
                 >
-                  <X className="w-4 h-4" />
+                  <Search className="w-5 h-5" />
                 </button>
-              </form>
-            )}
-          </div>
+              ) : (
+                <form onSubmit={handleSearch} className="flex items-center gap-2">
+                  <input
+                    type="text"
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    placeholder="Search products..."
+                    className="w-48 px-3 py-1.5 text-sm rounded-md bg-white/10 border border-[#f3e5b5]/30 text-white placeholder:text-white/50 focus:outline-none focus:border-[#f3e5b5]"
+                    autoFocus
+                  />
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setSearchOpen(false)
+                      setSearchQuery("")
+                    }}
+                    className="text-[#f3e5b5] hover:text-white flex items-center justify-center"
+                  >
+                    <X className="w-4 h-4" />
+                  </button>
+                </form>
+              )}
+            </div>
+          )}
           
           {/* Mobile Menu Button */}
           <button

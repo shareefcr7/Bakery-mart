@@ -5,7 +5,7 @@ import { getProductById, getProducts } from "@/lib/db"
 import { notFound } from "next/navigation"
 import Image from "next/image"
 import Link from "next/link"
-import { Check, Mail, Share2 } from "lucide-react"
+import { Check, Mail, Share2, Search } from "lucide-react"
 import { ProductCard } from "@/components/product-card"
 
 // Removing generateStaticParams to allow dynamic rendering for new database items
@@ -104,6 +104,7 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
                     <button className="px-6 py-4 bg-white/5 text-white font-bold rounded-xl hover:bg-white/10 transition-all border border-white/10">
                         <Share2 className="w-5 h-5" />
                     </button>
+
                 </div>
             </div>
         </div>
