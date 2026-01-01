@@ -20,8 +20,40 @@ export default function ImageUpload({ value, onChange, disabled }: ImageUploadPr
     if (!file) return;
 
     setIsUploading(true);
+    
+    // Compress image
+    const compressedFile = await new Promise<File>((resolve) => {
+      const img = document.createElement('img');
+      img.src = URL.createObjectURL(file);
+      img.onload = () => {
+        const canvas = document.createElement('canvas');
+        const MAX_WIDTH = 1200;
+        const scale = MAX_WIDTH / img.width;
+        
+        if (scale < 1) {
+            canvas.width = MAX_WIDTH;
+            canvas.height = img.height * scale;
+        } else {
+            canvas.width = img.width;
+            canvas.height = img.height;
+        }
+
+        const ctx = canvas.getContext('2d');
+        ctx?.drawImage(img, 0, 0, canvas.width, canvas.height);
+        
+        canvas.toBlob((blob) => {
+            if (blob) {
+                resolve(new File([blob], file.name, { type: 'image/jpeg' }));
+            } else {
+                resolve(file); // Fallback to original
+            }
+        }, 'image/jpeg', 0.8); // 80% quality
+      };
+      img.onerror = () => resolve(file);
+    });
+
     const formData = new FormData();
-    formData.append('file', file);
+    formData.append('file', compressedFile);
 
     try {
       const res = await fetch('/api/upload', {

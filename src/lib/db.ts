@@ -33,7 +33,7 @@ async function initDB() {
 // Products
 export async function getProducts() {
   await initDB();
-  const products = await Product.find({}).sort({ createdAt: -1 }).lean();
+  const products = await Product.find({}).sort({ createdAt: -1 }).limit(50).lean();
   return JSON.parse(JSON.stringify(products));
 }
 

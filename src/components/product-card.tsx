@@ -30,10 +30,10 @@ export function ProductCard({ product, variant = "dark", priority = false }: Pro
     >
       {/* Card Background with Glassmorphism */}
       <div className={cn(
-        "absolute inset-0 backdrop-blur-sm rounded-2xl border shadow-lg transition-all duration-500 ease-out group-hover:shadow-2xl",
+        "absolute inset-0 rounded-2xl border shadow-lg transition-all duration-500 ease-out group-hover:shadow-2xl",
         isLight 
             ? "bg-white border-neutral-200 group-hover:border-neutral-300 group-hover:shadow-neutral-200/50" 
-            : "bg-white/5 border-white/10 group-hover:bg-white/10 group-hover:border-white/20 group-hover:shadow-[#7E0806]/20"
+            : "bg-[#111] border-white/5 group-hover:bg-[#1a1a1a] group-hover:border-white/20 group-hover:shadow-[#7E0806]/20"
       )} />
 
       {/* Image Container */}
