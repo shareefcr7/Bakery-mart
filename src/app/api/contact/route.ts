@@ -13,6 +13,12 @@ export async function POST(request: Request) {
       );
     }
 
+    // optional: Gracefully handle missing DB connection for demo purposes
+    if (!process.env.MONGODB_URI) {
+        console.warn('MONGODB_URI missing. Skipping database save.');
+        return NextResponse.json({ success: true, message: 'Message sent! (Simulation code: DB not connected)' });
+    }
+
     const newMessage = await addMessage({
       name,
       email,
