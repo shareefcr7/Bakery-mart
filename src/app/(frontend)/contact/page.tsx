@@ -3,7 +3,7 @@
 import { useState } from "react"
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
-import { Mail, Phone, MapPin, Send, Loader2, CheckCircle2 } from "lucide-react"
+import { Mail, Phone, MapPin, Send, Loader2, CheckCircle2, MessageCircle } from "lucide-react"
 
 
 import { AnimatedHeading } from "@/components/ui/animated-heading"
@@ -192,17 +192,36 @@ export default function ContactPage() {
                 </div>
               )}
 
-              <button 
-                type="submit" 
-                disabled={status === "submitting" || status === "success"}
-                className="w-full bg-[#f3e5b5] text-black font-bold py-3 rounded-lg hover:bg-[#f3e5b5]/90 transition-colors flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+              <button
+                type="submit"
+                className="w-full bg-[#7E0806] text-white font-bold py-3 rounded-lg hover:bg-[#5a0605] transition-colors flex items-center justify-center gap-2"
+                disabled={status === "submitting"}
               >
                 {status === "submitting" ? (
-                  <>Sending... <Loader2 className="w-4 h-4 animate-spin" /></>
+                  <>
+                    <Loader2 className="w-5 h-5 animate-spin" /> Sending...
+                  </>
                 ) : (
-                  <>Send Message <Send className="w-4 h-4" /></>
+                  <>
+                    <Send className="w-5 h-5" /> Send Message
+                  </>
                 )}
               </button>
+              
+              <div className="relative flex py-2 items-center">
+                  <div className="flex-grow border-t border-[#f3e5b5]/20"></div>
+                  <span className="flex-shrink px-4 text-[#f3e5b5]/50 text-sm">Or</span>
+                  <div className="flex-grow border-t border-[#f3e5b5]/20"></div>
+              </div>
+
+              <a 
+                href="https://wa.me/917012552969" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="w-full bg-[#25D366] text-white font-bold py-3 rounded-lg hover:bg-[#128C7E] transition-colors flex items-center justify-center gap-2"
+              >
+                Chat on WhatsApp <MessageCircle className="w-5 h-5" />
+              </a>
             </form>
           </div>
         </div>
