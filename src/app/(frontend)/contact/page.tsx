@@ -92,7 +92,7 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <h3 className="font-bold text-[#f3e5b5]">Call Us</h3>
-                  <p className="text-[#f3e5b5]/80">+1 (555) 123-4567</p>
+                  <p className="text-[#f3e5b5]/80">+91 7012552969</p>
                   <p className="text-sm text-[#f3e5b5]/60">Mon-Fri: 9am - 6pm</p>
                 </div>
               </div>

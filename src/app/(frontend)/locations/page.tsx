@@ -10,7 +10,7 @@ export default function LocationsPage() {
       id: 1,
       name: "Downtown Flagship",
       address: "123 Baker Street, City Centre",
-      phone: "+1 (555) 123-4567",
+      phone: "+91 7012552969",
       hours: "Mon-Sun: 7am - 9pm",
       description: "Our original location where it all started. Experience the full range of our premium bakery items in the heart of the city."
     },
