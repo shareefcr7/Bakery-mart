@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
+import Image from "next/image"
 import { Mail, Phone, MapPin, Send, Loader2, CheckCircle2, MessageCircle } from "lucide-react"
 
 
@@ -54,15 +55,27 @@ export default function ContactPage() {
     <main className="min-h-screen bg-black text-[#f3e5b5]">
       <Navbar />
       
-      <section className="relative py-24 md:py-32 bg-white overflow-hidden">
+      <section className="relative py-24 md:py-32 overflow-hidden bg-black">
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/images/packaging-boxes.png"
+            alt="Contact Bakersmart"
+            fill
+            className="object-cover object-center"
+            priority
+            quality={100}
+            sizes="100vw"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black/80" />
+        </div>
         <div className="container mx-auto px-4 text-center relative z-10">
-          <AnimatedHeading title="Contact Us" textColor="text-[#7E0806]" iconSrc="/best-sellers-logo.png" />
+          <AnimatedHeading title="Contact Us" textColor="text-white" iconSrc="/best-sellers-logo.png" />
           
           <div className="flex justify-center mt-6">
-            <Breadcrumb color="text-[#7E0806]" />
+            <Breadcrumb color="text-[#f3e5b5]" />
           </div>
 
-          <FadeIn delay={0.2}><p className="text-[#7E0806]/80 mt-6 text-lg md:text-xl font-medium max-w-2xl mx-auto">We&apos;d love to hear from you. Get in touch with us.</p></FadeIn>
+          <FadeIn delay={0.2}><p className="text-[#f3e5b5]/90 mt-6 text-lg md:text-xl font-medium max-w-2xl mx-auto">We&apos;d love to hear from you. Get in touch with us.</p></FadeIn>
         </div>
       </section>
 

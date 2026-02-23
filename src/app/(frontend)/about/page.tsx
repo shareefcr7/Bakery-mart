@@ -11,10 +11,22 @@ export default function AboutPage() {
       <Navbar />
       
       {/* Header */}
-      <section className="relative py-24 md:py-32 bg-white overflow-hidden">
+      <section className="relative py-24 md:py-32 overflow-hidden bg-black">
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/images/baking-tools.png"
+            alt="About Bakersmart"
+            fill
+            className="object-cover object-center"
+            priority
+            quality={100}
+            sizes="100vw"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black/80" />
+        </div>
         <div className="container mx-auto px-4 text-center relative z-10">
-          <AnimatedHeading title="About Us" textColor="text-[#7E0806]" />
-          <FadeIn delay={0.2}><p className="text-xl text-[#7E0806]/90 mt-4 max-w-2xl mx-auto font-medium">The story behind the sweetness.</p></FadeIn>
+          <AnimatedHeading title="About Us" textColor="text-white" iconSrc="/best-sellers-logo.png" />
+          <FadeIn delay={0.2}><p className="text-xl text-[#f3e5b5] mt-4 max-w-2xl mx-auto font-medium">The story behind the sweetness.</p></FadeIn>
         </div>
       </section>
 

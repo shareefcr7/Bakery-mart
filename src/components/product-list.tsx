@@ -107,7 +107,7 @@ export function ProductList({ initialProducts, categories }: ProductListProps) {
                     variants={container}
                     initial="hidden"
                     animate="show"
-                    className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-4 md:gap-6"
+                    className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6"
                 >
                     <AnimatePresence mode="popLayout">
                         {filteredProducts.map((product, index) => (
@@ -119,6 +119,7 @@ export function ProductList({ initialProducts, categories }: ProductListProps) {
                                 animate="show"
                                 exit={{ opacity: 0, scale: 0.9 }}
                                 transition={{ duration: 0.2 }}
+                                className="h-full block"
                             >
                                 <ProductCard 
                                     product={product} 

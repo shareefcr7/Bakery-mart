@@ -21,8 +21,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={`${outfit.variable} font-sans antialiased bg-background text-foreground transition-colors duration-300`}>
+    <html lang="en" suppressHydrationWarning className="overflow-x-hidden">
+      <body className={`${outfit.variable} font-sans antialiased bg-background text-foreground transition-colors duration-300 overflow-x-hidden`}>
           <WishlistProvider>
             {children}
           </WishlistProvider>

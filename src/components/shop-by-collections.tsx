@@ -189,7 +189,7 @@ export function ShopByCollections({ categories = [] }: ShopByCollectionsProps) {
 
       {/* Collections Grid */}
       <div className="container mx-auto px-4 py-16">
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
           {displayCategories.map((cat, index) => {
             // Find style reference from the existing collections array
             const style = collections.find(s => s.title === cat.name) || {
@@ -223,15 +223,15 @@ export function ShopByCollections({ categories = [] }: ShopByCollectionsProps) {
                   </div>
 
                   {/* Content Overlay */}
-                  <div className="absolute inset-x-0 bottom-0 p-4 md:p-6 z-20 flex flex-col justify-end h-full">
-                    <h3 className="text-lg md:text-2xl font-bold text-white mb-1 drop-shadow-md leading-tight">{cat.name}</h3>
+                  <div className="absolute inset-x-0 bottom-0 p-3 sm:p-4 md:p-6 z-20 flex flex-col justify-end h-full">
+                    <h3 className="text-base sm:text-lg md:text-2xl font-bold text-white mb-1 drop-shadow-md leading-tight break-words">{cat.name}</h3>
                     
                     {/* Measurements Badge */}
-                    <div className="inline-block bg-white/20 backdrop-blur-md border border-white/30 rounded-full px-2 py-0.5 text-[10px] md:text-xs text-white font-medium mb-2 w-fit">
-                      {style.measurements}
+                    <div className="inline-flex bg-white/20 backdrop-blur-md border border-white/30 rounded-full px-2 py-0.5 text-[9px] sm:text-[10px] md:text-xs text-white font-medium mb-2 max-w-full">
+                      <span className="truncate">{style.measurements}</span>
                     </div>
 
-                    <p className="text-white/80 text-xs md:text-sm line-clamp-2 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 hidden md:block">
+                    <p className="text-white/80 text-[10px] sm:text-xs md:text-sm line-clamp-2 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 hidden md:block">
                       {style.description}
                     </p>
                     

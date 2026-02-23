@@ -3,9 +3,6 @@
 import * as React from "react"
 import Link from "next/link"
 import Image from "next/image"
-import { motion } from "framer-motion"
-
-import { FadeIn } from "@/components/ui/fade-in"
 
 export function Hero() {
   return (
@@ -28,34 +25,20 @@ export function Hero() {
 
 
       {/* Content - Optimized Text Position */}
-      <div className="relative z-10 container mx-auto px-4 h-full flex items-center md:items-top">
-        <motion.div
-          initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1.2, ease: "easeOut", delay: 0.3 }}
-          className="max-w-2xl ml-0 md:ml-8 lg:ml-16 mt-0 md:mt-24"
-        >
+      <div className="relative z-10 container mx-auto px-4 h-full flex flex-col justify-end pb-24 md:pb-0 md:justify-center md:items-start text-center md:text-left">
+        <div className="max-w-2xl mx-auto md:mx-0 md:ml-8 lg:ml-16">
 
-          <FadeIn delay={0.8}>
-            <div className="h-1 w-20 md:w-24 bg-gradient-to-r from-[#7E0806] to-amber-600 rounded-full mb-6 md:mb-8 shadow-lg shadow-[#7E0806]/50" />
-          </FadeIn>
+          <div className="h-1 w-20 md:w-24 bg-gradient-to-r from-[#7E0806] to-amber-600 rounded-full mb-6 max-md:mx-auto md:mb-8 shadow-lg shadow-[#7E0806]/50" />
 
-          <FadeIn delay={0.9}>
-            <p className="text-base md:text-xl text-white/90 max-w-xl mb-8 md:mb-10 font-light leading-relaxed drop-shadow-lg pr-4 md:pr-0">
-              Experience the finest selection of handcrafted cakes and pastries, 
-              baked with passion and perfected for your special moments.
-            </p>
-          </FadeIn>
+          <p className="text-base sm:text-lg md:text-xl text-white/90 max-w-xl mb-8 md:mb-10 font-light leading-relaxed drop-shadow-lg mx-auto md:mx-0 px-2 sm:px-4 md:px-0">
+            Experience the finest selection of handcrafted cakes and pastries, 
+            baked with passion and perfected for your special moments.
+          </p>
           
-          <motion.div 
-            className="flex flex-col sm:flex-row gap-4 md:gap-5 items-stretch sm:items-start"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.1, duration: 0.8 }}
-          >
+          <div className="flex flex-col sm:flex-row gap-4 sm:gap-5 justify-center md:justify-start items-center sm:items-stretch">
             <Link 
               href="/products" 
-              className="group relative px-8 md:px-12 py-4 md:py-5 bg-gradient-to-r from-[#7E0806] to-[#9a1a18] text-white font-bold text-base md:text-lg rounded-full overflow-hidden shadow-2xl shadow-[#7E0806]/40 transition-all hover:scale-105 hover:shadow-[#7E0806]/60 border border-white/10 text-center"
+              className="group relative px-8 py-4 sm:px-10 sm:py-4 md:px-12 md:py-5 bg-gradient-to-r from-[#7E0806] to-[#9a1a18] text-white font-bold text-sm sm:text-base md:text-lg rounded-full overflow-hidden shadow-2xl shadow-[#7E0806]/40 transition-[transform,shadow] hover:scale-105 hover:shadow-[#7E0806]/60 border border-white/10 text-center w-full sm:w-auto"
             >
               <span className="relative z-10 flex items-center justify-center gap-2 md:gap-3">
                 Explore Collection
@@ -66,24 +49,19 @@ export function Hero() {
             
             <Link 
               href="/about" 
-              className="px-8 md:px-12 py-4 md:py-5 bg-white/5 border-2 border-white/30 text-white font-semibold text-base md:text-lg rounded-full hover:bg-white/15 hover:border-white/60 transition-all backdrop-blur-md shadow-xl text-center"
+              className="px-8 py-4 sm:px-10 sm:py-4 md:px-12 md:py-5 bg-white/5 border-2 border-white/30 text-white font-semibold text-sm sm:text-base md:text-lg rounded-full hover:bg-white/15 hover:border-white/60 transition-colors backdrop-blur-md shadow-xl text-center w-full sm:w-auto"
             >
               Our Story
             </Link>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
       </div>
 
         {/* Scroll Indicator - Hidden on Mobile */}
-      <motion.div 
-        className="hidden md:flex absolute bottom-12 left-8 md:left-16 z-20 text-white/70 flex-col items-center gap-2"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 2, duration: 1 }}
-      >
+      <div className="hidden md:flex absolute bottom-12 left-8 md:left-16 z-20 text-white/70 flex-col items-center gap-2">
         <span className="text-[10px] uppercase tracking-[0.2em] rotate-[-90deg] translate-y-8 origin-left w-24 text-right">Scroll Down</span>
         <div className="h-24 w-[1px] bg-gradient-to-b from-white/0 via-white/70 to-white/0 mt-12" />
-      </motion.div>
+      </div>
     </section>
   )
 }

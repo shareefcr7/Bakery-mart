@@ -2,7 +2,6 @@
 
 import Image from "next/image"
 import Link from "next/link"
-import { motion } from "framer-motion"
 import { Product } from "@/lib/data"
 import { cn } from "@/lib/utils"
 import { useState } from "react"
@@ -23,11 +22,8 @@ export function ProductCard({ product, variant = "dark", priority = false }: Pro
   const isLight = variant === "light"
 
   return (
-    <motion.div 
-      className="group relative h-full flex flex-col"
-      whileHover={{ y: -5 }}
-      transition={{ type: "spring", stiffness: 400, damping: 25 }}
-    >
+    <div className="group relative h-full flex flex-col hover:-translate-y-1 transition-transform duration-300 ease-out cursor-pointer">
+      <Link href={`/products/${product.id}`} className="flex flex-col h-full w-full relative z-10">
       {/* Card Background with Glassmorphism */}
       <div className={cn(
         "absolute inset-0 rounded-2xl border shadow-lg transition-all duration-500 ease-out group-hover:shadow-2xl",
@@ -45,8 +41,8 @@ export function ProductCard({ product, variant = "dark", priority = false }: Pro
           priority={priority}
           sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
           className={cn(
-            "object-cover transition-all duration-700 ease-out group-hover:scale-110",
-            imageLoaded ? "opacity-100 blur-0" : "opacity-0 blur-lg scale-105"
+            "object-cover transition-[transform,opacity] duration-500 ease-in-out group-hover:scale-110",
+            imageLoaded ? "opacity-100" : "opacity-0 scale-105"
           )}
           onError={(e) => {
             const target = e.target as HTMLImageElement;
@@ -65,20 +61,19 @@ export function ProductCard({ product, variant = "dark", priority = false }: Pro
         
         {/* Hover Overlay Actions */}
         <div className={cn(
-            "absolute inset-x-0 bottom-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-500 cubic-bezier(0.16, 1, 0.3, 1) flex gap-3 justify-center items-end pb-6",
+            "absolute inset-x-0 bottom-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out flex gap-3 justify-center items-end pb-6",
             isLight ? "bg-gradient-to-t from-white/90 to-transparent" : "bg-gradient-to-t from-black/90 to-transparent"
         )}>
-            <Link 
-              href={`/products/${product.id}`} 
+            <span 
               className={cn(
-                  "px-6 py-2.5 text-sm font-bold rounded-full w-full text-center shadow-lg transform hover:scale-105 transition-all duration-300 active:scale-95",
+                  "px-6 py-2.5 text-sm font-bold rounded-full w-full text-center shadow-lg transform group-hover:scale-100 transition-all duration-300",
                   isLight 
-                    ? "bg-neutral-900 text-white hover:bg-neutral-800"
-                    : "bg-white text-black hover:bg-[#f3e5b5]"
+                    ? "bg-neutral-900 text-white"
+                    : "bg-white text-black"
               )}
             >
                 View Details
-            </Link>
+            </span>
         </div>
         
         {product.isBestSeller && (
@@ -94,7 +89,7 @@ export function ProductCard({ product, variant = "dark", priority = false }: Pro
       </div>
       
       {/* Content */}
-      <div className="relative p-5 flex-1 flex flex-col z-10">
+      <div className="relative p-4 sm:p-5 flex-1 flex flex-col z-10 w-full">
         <div className="flex justify-between items-start mb-2 group/text">
             <p className={cn(
                 "text-[10px] uppercase tracking-[0.15em] font-medium transition-colors duration-300",
@@ -108,10 +103,12 @@ export function ProductCard({ product, variant = "dark", priority = false }: Pro
             </div>
         </div>
         
-        <h3 className={cn(
-            "font-semibold text-lg leading-tight mb-3 transition-colors duration-300 line-clamp-2 min-h-[3.5rem] group-hover:translate-x-1 transition-transform ease-out",
-            isLight ? "text-neutral-900 group-hover:text-[#7E0806]" : "text-white group-hover:text-[#f3e5b5]"
-        )}>{product.name}</h3>
+        <div className="min-h-[3rem] sm:min-h-[3.5rem] mb-2 sm:mb-3 flex items-start">
+            <h3 className={cn(
+                "font-semibold text-sm sm:text-base md:text-lg leading-tight transition-colors duration-300 line-clamp-2 break-words w-full",
+                isLight ? "text-neutral-900 group-hover:text-[#7E0806]" : "text-white group-hover:text-[#f3e5b5]"
+            )}>{product.name}</h3>
+        </div>
         
         <div className={cn(
             "mt-auto flex items-end justify-between border-t pt-4 transition-colors duration-500",
@@ -129,6 +126,7 @@ export function ProductCard({ product, variant = "dark", priority = false }: Pro
             </div>
         </div>
       </div>
-    </motion.div>
+      </Link>
+    </div>
   )
 }
