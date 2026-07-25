@@ -1,19 +1,15 @@
 "use client"
 
 import { ProductCard } from "./product-card"
-import { motion } from "framer-motion"
 import { AnimatedHeading } from "./ui/animated-heading"
-
 import { IProduct } from "@/lib/db"
-// import { Product } from "@/lib/data" // Remove if unused, but keep IProduct for typing
+import { memo } from "react"
 
 interface BestSellersProps {
-  products?: IProduct[];
+  products?: IProduct[]
 }
 
-export function BestSellers({ products = [] }: BestSellersProps) {
-  // If no products passed (e.g. error), we could fallback or show nothing. 
-  // Assuming parent handles fetching.
+export const BestSellers = memo(function BestSellers({ products = [] }: BestSellersProps) {
   const bestSellers = products.slice(0, 4)
 
   return (
@@ -40,4 +36,4 @@ export function BestSellers({ products = [] }: BestSellersProps) {
       </div>
     </section>
   )
-}
+})

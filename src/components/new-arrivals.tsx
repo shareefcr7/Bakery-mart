@@ -1,16 +1,15 @@
 "use client"
 
 import { ProductCard } from "./product-card"
-import { motion } from "framer-motion"
 import { AnimatedHeading } from "./ui/animated-heading"
-
 import { IProduct } from "@/lib/db"
+import { memo } from "react"
 
 interface NewArrivalsProps {
-  products?: IProduct[];
+  products?: IProduct[]
 }
 
-export function NewArrivals({ products = [] }: NewArrivalsProps) {
+export const NewArrivals = memo(function NewArrivals({ products = [] }: NewArrivalsProps) {
   const newArrivals = products.slice(0, 4)
 
   return (
@@ -37,4 +36,4 @@ export function NewArrivals({ products = [] }: NewArrivalsProps) {
       </div>
     </section>
   )
-}
+})
