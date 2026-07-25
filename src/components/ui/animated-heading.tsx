@@ -22,15 +22,15 @@ export function AnimatedHeading({
   iconSrc = "/section-heading-red-white.png"
 }: AnimatedHeadingProps) {
   return (
-    <div className={cn("flex items-center justify-center gap-4 md:gap-8 overflow-hidden py-4", className)}>
+    <div className={cn("flex items-center justify-center gap-3 sm:gap-6 md:gap-8 overflow-hidden py-4", className)}>
       {/* Left Logo */}
       {showLeftIcon && (
       <motion.div
-        initial={{ x: -100, opacity: 0, rotate: -180 }}
-        whileInView={{ x: 0, opacity: 1, rotate: 0 }}
-        transition={{ duration: 0.8, type: "spring", bounce: 0.4 }}
+        initial={{ opacity: 0, scale: 0.9 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.4, ease: "easeOut" }}
         viewport={{ once: true }}
-        className="relative w-[150px] h-[120px] md:w-[200px] md:h-[140px] flex-shrink-0"
+        className="relative w-[100px] h-[80px] sm:w-[140px] sm:h-[110px] md:w-[180px] md:h-[130px] flex-shrink-0"
       >
         <Image
           src={iconSrc}
@@ -43,11 +43,11 @@ export function AnimatedHeading({
 
       {/* Title */}
       <motion.h1 
-        initial={{ y: 20, opacity: 0 }}
-        whileInView={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.6, delay: 0.2 }}
+        initial={{ opacity: 0, y: 15 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.4, ease: "easeOut" }}
         viewport={{ once: true }}
-        className={cn("text-3xl md:text-5xl font-bold text-center tracking-tight", textColor)}
+        className={cn("text-2xl sm:text-3xl md:text-5xl font-bold text-center tracking-tight", textColor)}
       >
         {title}
       </motion.h1>
@@ -55,11 +55,11 @@ export function AnimatedHeading({
       {/* Right Logo */}
       {showRightIcon && (
       <motion.div
-        initial={{ x: 100, opacity: 0, rotate: 180 }}
-        whileInView={{ x: 0, opacity: 1, rotate: 0 }}
-        transition={{ duration: 0.8, type: "spring", bounce: 0.4 }}
+        initial={{ opacity: 0, scale: 0.9 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.4, ease: "easeOut" }}
         viewport={{ once: true }}
-        className="relative w-[150px] h-[120px] md:w-[200px] md:h-[140px] flex-shrink-0"
+        className="relative w-[100px] h-[80px] sm:w-[140px] sm:h-[110px] md:w-[180px] md:h-[130px] flex-shrink-0"
       >
         <Image
           src={iconSrc}

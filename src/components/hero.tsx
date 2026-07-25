@@ -6,7 +6,7 @@ import Image from "next/image"
 
 export function Hero() {
   return (
-    <section className="relative w-full min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-neutral-900 via-stone-900 to-neutral-950">
+    <section className="relative w-full min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-neutral-900 via-stone-900 to-neutral-950 pt-[85px] sm:pt-[95px]">
       {/* Background Image - Bakersmart Cake */}
       <div className="absolute inset-0 z-0 bg-[#8B0000]">
         <Image

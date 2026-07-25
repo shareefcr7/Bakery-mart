@@ -55,7 +55,7 @@ export default function ContactPage() {
     <main className="min-h-screen bg-black text-[#f3e5b5]">
       <Navbar />
       
-      <section className="relative py-24 md:py-32 overflow-hidden bg-black">
+      <section className="relative pt-[110px] md:pt-[140px] pb-20 md:pb-28 overflow-hidden bg-black">
         <div className="absolute inset-0 z-0">
           <Image
             src="/images/packaging-boxes.png"

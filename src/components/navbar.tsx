@@ -2,7 +2,6 @@
 import logo from "@/assets/images/section-header-bg.png"
 
 import * as React from "react"
-
 import Link from "next/link"
 import Image from "next/image"
 import { usePathname, useRouter } from "next/navigation"
@@ -14,8 +13,21 @@ export function Navbar() {
   const [isOpen, setIsOpen] = React.useState(false)
   const [searchOpen, setSearchOpen] = React.useState(false)
   const [searchQuery, setSearchQuery] = React.useState("")
+  const [isScrolled, setIsScrolled] = React.useState(false)
   const pathname = usePathname()
   const router = useRouter()
+
+  React.useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 20) {
+        setIsScrolled(true)
+      } else {
+        setIsScrolled(false)
+      }
+    }
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault()
@@ -35,16 +47,24 @@ export function Navbar() {
   ]
 
   return (
-    <nav className="sticky top-0 z-50 w-full bg-[#7E0806] border-b border-white/20 shadow-md">
-      <div className="container mx-auto px-4 py-4 flex items-center justify-between">
+    <header className={cn(
+      "fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300 ease-in-out border-b border-white/15",
+      isScrolled 
+        ? "bg-[#7E0806]/95 backdrop-blur-md shadow-xl py-2 sm:py-2.5" 
+        : "bg-[#7E0806] shadow-md py-3 sm:py-4"
+    )}>
+      <div className="container mx-auto px-4 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="flex items-center">
+        <Link href="/" className="flex items-center group">
           <Image 
             src={logo}
             alt="Bakers Mart"
             width={670}
             height={140}
-            className="h-[80px] md:h-[80px] w-auto object-contain"
+            className={cn(
+              "w-auto object-contain transition-all duration-300",
+              isScrolled ? "h-[55px] sm:h-[65px]" : "h-[65px] sm:h-[80px]"
+            )}
             priority
           />
         </Link>
@@ -56,24 +76,27 @@ export function Navbar() {
               key={link.href}
               href={link.href}
               className={cn(
-                "text-sm font-medium transition-colors hover:text-white",
-                pathname === link.href ? "text-[#f3e5b5] font-bold" : "text-[#f3e5b5]/80"
+                "text-sm font-medium transition-all duration-200 relative py-1 hover:text-white",
+                pathname === link.href ? "text-[#f3e5b5] font-bold" : "text-[#f3e5b5]/85"
               )}
             >
               {link.label}
+              {pathname === link.href && (
+                <span className="absolute bottom-0 left-0 w-full h-[2px] bg-[#f3e5b5] rounded-full" />
+              )}
             </Link>
           ))}
         </div>
 
         {/* Right Icons */}
-        <div className="flex items-center gap-4 h-full">
+        <div className="flex items-center gap-4">
           {/* Search - Only show on Product Pages */}
           {pathname?.includes('/products') && (
             <div className="relative flex items-center">
               {!searchOpen ? (
                 <button 
                   onClick={() => setSearchOpen(true)}
-                  className="text-[#f3e5b5] hover:text-white transition-colors flex items-center justify-center" 
+                  className="text-[#f3e5b5] hover:text-white transition-colors p-2 rounded-full hover:bg-white/10" 
                   aria-label="Search Products"
                 >
                   <Search className="w-5 h-5" />
@@ -85,7 +108,7 @@ export function Navbar() {
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     placeholder="Search products..."
-                    className="w-48 px-3 py-1.5 text-sm rounded-md bg-white/10 border border-[#f3e5b5]/30 text-white placeholder:text-white/50 focus:outline-none focus:border-[#f3e5b5]"
+                    className="w-40 sm:w-48 px-3 py-1.5 text-sm rounded-md bg-white/10 border border-[#f3e5b5]/30 text-white placeholder:text-white/50 focus:outline-none focus:border-[#f3e5b5]"
                     autoFocus
                   />
                   <button
@@ -94,7 +117,7 @@ export function Navbar() {
                       setSearchOpen(false)
                       setSearchQuery("")
                     }}
-                    className="text-[#f3e5b5] hover:text-white flex items-center justify-center"
+                    className="text-[#f3e5b5] hover:text-white p-1"
                   >
                     <X className="w-4 h-4" />
                   </button>
@@ -105,7 +128,7 @@ export function Navbar() {
           
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden text-[#f3e5b5] flex items-center justify-center"
+            className="md:hidden text-[#f3e5b5] hover:text-white p-2 rounded-lg hover:bg-white/10 transition-colors"
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle menu"
           >
@@ -116,16 +139,16 @@ export function Navbar() {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden bg-[#7E0806] border-t border-white/20">
-          <div className="container mx-auto px-4 py-4 flex flex-col gap-3">
+        <div className="md:hidden bg-[#7E0806]/98 backdrop-blur-lg border-t border-white/20">
+          <div className="container mx-auto px-4 py-4 flex flex-col gap-2">
             {links.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 onClick={() => setIsOpen(false)}
                 className={cn(
-                  "text-base font-medium py-2 transition-colors",
-                  pathname === link.href ? "text-[#f3e5b5] font-bold" : "text-[#f3e5b5]/80 hover:text-white"
+                  "text-base font-medium px-4 py-2.5 rounded-lg transition-colors",
+                  pathname === link.href ? "text-[#f3e5b5] bg-white/10 font-bold" : "text-[#f3e5b5]/85 hover:text-white hover:bg-white/5"
                 )}
               >
                 {link.label}
@@ -134,6 +157,6 @@ export function Navbar() {
           </div>
         </div>
       )}
-    </nav>
+    </header>
   )
 }
