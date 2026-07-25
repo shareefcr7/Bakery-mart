@@ -31,17 +31,10 @@ export function BestSellers({ products = [] }: BestSellersProps) {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
-          {bestSellers.map((product, index) => (
-            <motion.div
-              key={product.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              className="h-full"
-            >
+          {bestSellers.map((product) => (
+            <div key={product.id} className="h-full">
               <ProductCard product={product} priority={true} />
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

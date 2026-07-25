@@ -6,6 +6,7 @@ import { Plus, Pencil, Trash2, Search } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import { formatPrice } from '@/lib/utils';
 
 interface Product {
   id: string;
@@ -153,7 +154,7 @@ export default function ProductsPage() {
                       </span>
                     </td>
                      <td className="px-6 py-4 text-zinc-600 dark:text-zinc-400 font-medium">
-                      {product.price}
+                      {formatPrice(product.price)}
                     </td>
                     <td className="px-6 py-4 text-right">
                       <div className="flex items-center justify-end gap-2">

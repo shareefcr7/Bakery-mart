@@ -19,6 +19,8 @@ export function generateStaticParams() {
 
 import { IProduct } from "@/models/Product"
 
+import { formatPrice } from "@/lib/utils"
+
 export default async function ProductPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params
   const product = await getProductById(id)
@@ -67,7 +69,7 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
                 </div>
                 
                 <h1 className="text-3xl md:text-5xl font-bold mb-4 text-white">{product.name}</h1>
-                <p className="text-2xl font-medium text-[#f3e5b5] mb-6">{product.price}</p>
+                <p className="text-2xl font-medium text-[#f3e5b5] mb-6">{formatPrice(product.price)}</p>
                 
                 <p className="text-neutral-400 leading-relaxed text-lg mb-8">
                     {product.description}

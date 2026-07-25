@@ -6,7 +6,7 @@ import { useRef } from 'react';
 interface ScrollRevealProps {
   children: React.ReactNode;
   width?: 'fit-content' | '100%';
-  variant?: 'fadeUrl' | 'fadeIn' | 'fadeLeft' | 'fadeRight' | 'zoomIn';
+  variant?: 'fadeUp' | 'fadeIn' | 'fadeLeft' | 'fadeRight' | 'zoomIn';
   delay?: number;
   duration?: number;
   className?: string;
@@ -16,7 +16,7 @@ interface ScrollRevealProps {
 export const ScrollReveal = ({
   children,
   width = '100%',
-  variant = 'fadeUrl',
+  variant = 'fadeUp',
   delay = 0,
   duration = 0.5,
   className = '',
@@ -25,8 +25,8 @@ export const ScrollReveal = ({
   const ref = useRef(null);
 
   const variants = {
-    fadeUrl: {
-      hidden: { opacity: 0, y: 75 },
+    fadeUp: {
+      hidden: { opacity: 0, y: 20 },
       visible: { opacity: 1, y: 0 },
     },
     fadeIn: {
@@ -34,20 +34,20 @@ export const ScrollReveal = ({
       visible: { opacity: 1 },
     },
     fadeLeft: {
-      hidden: { opacity: 0, x: -75 },
+      hidden: { opacity: 0, x: -20 },
       visible: { opacity: 1, x: 0 },
     },
     fadeRight: {
-      hidden: { opacity: 0, x: 75 },
+      hidden: { opacity: 0, x: 20 },
       visible: { opacity: 1, x: 0 },
     },
     zoomIn: {
-        hidden: { opacity: 0, scale: 0.8 },
+        hidden: { opacity: 0, scale: 0.98 },
         visible: { opacity: 1, scale: 1 },
     }
   };
 
-  const selectedVariant = variant === 'fadeUrl' ? variants.fadeUrl : variants[variant];
+  const selectedVariant = variant === 'fadeUp' ? variants.fadeUp : variants[variant];
 
   return (
     <motion.div
@@ -55,8 +55,8 @@ export const ScrollReveal = ({
       variants={selectedVariant}
       initial="hidden"
       whileInView="visible" // Simpler than using useInView manually for animation triggering
-      viewport={{ once: once, margin: "-100px" }} // Trigger when 100px into view
-      transition={{ duration, delay, ease: "easeOut" }}
+      viewport={{ once: once, margin: "0px", amount: 0.05 }} // Trigger earlier (was -100px) to prevent stuck feeling
+      transition={{ duration: 0.35, delay, ease: "easeOut" }}
       style={{ width }}
       className={className}
     >

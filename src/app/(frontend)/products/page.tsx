@@ -35,7 +35,7 @@ export default function ProductsPage() {
             </div>
           </ScrollReveal>
           
-          <ScrollReveal variant="fadeUrl" delay={0.3}>
+          <ScrollReveal variant="fadeUp" delay={0.2}>
             <Suspense fallback={<ProductGridSkeleton />}>
                <ProductGrid />
             </Suspense>

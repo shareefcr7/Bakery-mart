@@ -69,10 +69,16 @@ export async function getCategories() {
   return JSON.parse(JSON.stringify(categories));
 }
 
+export async function getCategoryById(id: string) {
+  await initDB();
+  const category = await Category.findOne({ id }).lean();
+  return category ? JSON.parse(JSON.stringify(category)) : null;
+}
+
 export async function addCategory(categoryData: Partial<typeof Category.prototype>) {
   await initDB();
   
-  // Custom duplicate check (optional since we have initDB handling uniqueness mostly)
+  // Custom duplicate check
   const existing = await Category.findOne({ name: { $regex: new RegExp(`^${categoryData.name}$`, 'i') } });
   if (existing) {
     throw new Error("Category already exists");
@@ -89,21 +95,28 @@ export async function addCategory(categoryData: Partial<typeof Category.prototyp
 
 export async function updateCategory(id: string, updates: Partial<typeof Category.prototype>) {
   await initDB();
+  const existingCategory = await Category.findOne({ id });
+  if (!existingCategory) return null;
+
+  const oldName = existingCategory.name;
   const updated = await Category.findOneAndUpdate({ id }, updates, { new: true });
+  
+  // If name changed, update all products associated with the old category name
+  if (updated && updates.name && updates.name !== oldName) {
+    await Product.updateMany({ category: oldName }, { category: updates.name });
+  }
+
   return updated ? JSON.parse(JSON.stringify(updated)) : null;
 }
 
 export async function deleteCategory(id: string) {
   await initDB();
   
-  // Check usage
   const categoryToRemove = await Category.findOne({ id });
   if (!categoryToRemove) return null;
 
-  const isUsed = await Product.exists({ category: categoryToRemove.name });
-  if (isUsed) {
-    throw new Error(`Cannot delete category "${categoryToRemove.name}" because it is used by one or more products.`);
-  }
+  // Unlink products assigned to this category by setting them to 'Uncategorized'
+  await Product.updateMany({ category: categoryToRemove.name }, { category: 'Uncategorized' });
 
   const deleted = await Category.findOneAndDelete({ id });
   return deleted ? JSON.parse(JSON.stringify(deleted)) : null;

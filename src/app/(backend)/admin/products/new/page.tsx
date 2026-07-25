@@ -136,7 +136,7 @@ export default function NewProductPage() {
                   value={formData.price}
                   onChange={e => setFormData({...formData, price: e.target.value})}
                   className="w-full px-4 py-2 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-800/50"
-                  placeholder="$0.00"
+                  placeholder="₹500.00"
                   required
                 />
               </div>

@@ -3,7 +3,7 @@
 import Image from "next/image"
 import Link from "next/link"
 import { Product } from "@/lib/data"
-import { cn } from "@/lib/utils"
+import { cn, formatPrice } from "@/lib/utils"
 import { useState } from "react"
 
 interface ProductCardProps {
@@ -14,10 +14,11 @@ interface ProductCardProps {
 export function ProductCard({ product, variant = "dark", priority = false }: ProductCardProps & { priority?: boolean }) {
   const [imageLoaded, setImageLoaded] = useState(false)
   
-  // Calculate discount percentage if original price existed (simulated)
-  const priceValue = parseInt(product.price.replace(/[^0-9]/g, ""))
-  const originalPrice = Math.round(priceValue * 1.2)
-  const originalPriceStr = product.price.replace(/[0-9]+/, originalPrice.toString())
+  // Calculate original price simulation
+  const numericPrice = parseFloat(String(product.price).replace(/[^\d.]/g, "")) || 0
+  const originalPriceVal = Math.round(numericPrice * 1.25)
+  const formattedPrice = formatPrice(product.price)
+  const formattedOriginalPrice = formatPrice(originalPriceVal)
 
   const isLight = variant === "light"
 
@@ -41,16 +42,13 @@ export function ProductCard({ product, variant = "dark", priority = false }: Pro
           priority={priority}
           sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
           className={cn(
-            "object-cover transition-[transform,opacity] duration-500 ease-in-out group-hover:scale-110",
-            imageLoaded ? "opacity-100" : "opacity-0 scale-105"
+            "object-cover transition-transform duration-500 ease-in-out group-hover:scale-110 opacity-100"
           )}
           onError={(e) => {
             const target = e.target as HTMLImageElement;
             target.src = "/images/placeholder.png";
             target.srcset = "";
-            setImageLoaded(true); // Ensure it fades in
           }}
-          onLoad={() => setImageLoaded(true)}
         />
         
         {/* Subtle overlay for contrast on hover */}
@@ -61,12 +59,12 @@ export function ProductCard({ product, variant = "dark", priority = false }: Pro
         
         {/* Hover Overlay Actions */}
         <div className={cn(
-            "absolute inset-x-0 bottom-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out flex gap-3 justify-center items-end pb-6",
+            "absolute inset-x-0 bottom-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out flex gap-3 justify-center items-end pb-6",
             isLight ? "bg-gradient-to-t from-white/90 to-transparent" : "bg-gradient-to-t from-black/90 to-transparent"
         )}>
             <span 
               className={cn(
-                  "px-6 py-2.5 text-sm font-bold rounded-full w-full text-center shadow-lg transform group-hover:scale-100 transition-all duration-300",
+                  "px-6 py-2.5 text-sm font-bold rounded-full w-full text-center shadow-lg transform transition-all duration-300",
                   isLight 
                     ? "bg-neutral-900 text-white"
                     : "bg-white text-black"
@@ -95,7 +93,7 @@ export function ProductCard({ product, variant = "dark", priority = false }: Pro
                 "text-[10px] uppercase tracking-[0.15em] font-medium transition-colors duration-300",
                 isLight ? "text-neutral-500 group-hover:text-neutral-900" : "text-[#f3e5b5]/60 group-hover:text-[#f3e5b5]"
             )}>{product.category === 'Uncategorized' || product.category === 'UNCATEGORIZED' ? 'General' : product.category}</p>
-            {/* Rating Stars (Static for now) */}
+            {/* Rating Stars */}
             <div className="flex items-center gap-0.5">
                 {[1,2,3,4,5].map(i => (
                     <span key={i} className={cn("text-[10px] transition-opacity duration-300 group-hover:opacity-100 opacity-80", isLight ? "text-yellow-500" : "text-[#f3e5b5]")}>★</span>
@@ -118,11 +116,11 @@ export function ProductCard({ product, variant = "dark", priority = false }: Pro
                 <span className={cn(
                     "text-xs line-through mb-0.5 transition-colors duration-300",
                     isLight ? "text-neutral-400 decoration-neutral-400 group-hover:text-neutral-500" : "text-white/40 decoration-white/40 group-hover:text-white/60"
-                )}>{originalPriceStr}</span>
+                )}>{formattedOriginalPrice}</span>
                 <span className={cn(
                     "font-bold text-xl transition-all duration-300 group-hover:scale-105 origin-left",
                     isLight ? "text-[#7E0806]" : "text-[#f3e5b5]"
-                )}>{product.price}</span>
+                )}>{formattedPrice}</span>
             </div>
         </div>
       </div>

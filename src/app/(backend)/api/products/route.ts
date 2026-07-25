@@ -20,16 +20,17 @@ export async function POST(request: Request) {
         return NextResponse.json({ error: 'Name and Price are required' }, { status: 400 });
     }
 
+    const slug = body.name.toLowerCase().trim().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
     const newProduct = {
-      id: Date.now().toString(), // Simple ID generation
+      id: `${slug}-${Date.now().toString().slice(-4)}`,
       name: body.name,
-      description: body.description || 'No description provided.',
+      description: body.description || '',
       price: body.price,
       category: body.category || 'Uncategorized',
-      image: body.image || '/images/placeholder.png', // Fallback image
+      image: body.image || '/images/placeholder.png',
       images: body.images || [],
-      isBestSeller: body.isBestSeller || false,
-      isNewProduct: body.isNewProduct || false,
+      isBestSeller: Boolean(body.isBestSeller),
+      isNewProduct: Boolean(body.isNewProduct),
     };
 
     const added = await addProduct(newProduct);

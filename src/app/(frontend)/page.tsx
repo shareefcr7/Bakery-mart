@@ -26,26 +26,26 @@ export default async function Home() {
       <Navbar />
       <Hero />
       
-      <ScrollReveal variant="fadeUrl" delay={0.2} className="w-full">
+      <ScrollReveal variant="fadeUp" delay={0.1} className="w-full">
         <ShopByCollections categories={categories} />
       </ScrollReveal>
 
       {/* New Arrivals Section */}
       {newArrivals.length > 0 && (
-        <ScrollReveal variant="fadeUrl" delay={0.2} className="w-full">
+        <ScrollReveal variant="fadeUp" delay={0.1} className="w-full">
           <NewArrivals products={newArrivals} />
         </ScrollReveal>
       )}
       
-      <ScrollReveal variant="fadeLeft" delay={0.2} className="w-full">
+      <ScrollReveal variant="fadeUp" delay={0.1} className="w-full">
         <Features />
       </ScrollReveal>
 
-      <ScrollReveal variant="fadeRight" delay={0.2} className="w-full">
+      <ScrollReveal variant="fadeUp" delay={0.1} className="w-full">
         <BestSellers products={bestSellers} />
       </ScrollReveal>
 
-      <ScrollReveal variant="zoomIn" delay={0.2} className="w-full">
+      <ScrollReveal variant="fadeUp" delay={0.1} className="w-full">
         <Testimonials />
       </ScrollReveal>
       

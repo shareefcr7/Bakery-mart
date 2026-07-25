@@ -17,37 +17,25 @@ export default function EditCategoryPage({ params }: { params: Promise<{ id: str
 
   useEffect(() => {
     const fetchCategory = async () => {
-        try {
-          // Since our API currently returns all categories, we can filter or fetch logic
-          // But standard REST would use /api/categories/[id], which we have not implemented as a separate GET endpoint? 
-          // Wait, I implemented `src/app/api/categories/[id]/route.ts` with PUT and DELETE.
-          // I did NOT implement GET in `[id]/route.ts`. 
-          // I need to add GET to `src/app/api/categories/[id]/route.ts` or fetch list and find.
-          // Fetching list and finding is inefficient but works for small scale. 
-          // Let's quickly fix the API first or just use the list endpoint here if I can't edit API now.
-          // Actually I can just edit the API now by re-writing it.
-          // But to be fast, I'll just fetch all and find one. 
-          // PROPER WAY: Add GET to `[id]/route.ts`. 
-          // I will assume I will fix the API in next step or use the list fetch here.
-          // Let's use the list fetch for now to avoid breaking flow.
-          const res = await fetch('/api/categories');
-          if (res.ok) {
-            const data = await res.json();
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            const category = data.find((c: any) => c.id === id);
-            if (category) {
-              setName(category.name);
-              setImage(category.image);
-            } else {
-                 router.push('/admin/categories'); 
-            }
+      try {
+        const res = await fetch(`/api/categories/${id}`);
+        if (res.ok) {
+          const category = await res.json();
+          if (category) {
+            setName(category.name);
+            setImage(category.image);
+          } else {
+            router.push('/admin/categories'); 
           }
-        } catch (err) {
-          console.error(err);
-        } finally {
-          setIsLoading(false);
+        } else {
+          router.push('/admin/categories');
         }
-      };
+      } catch (err) {
+        console.error(err);
+      } finally {
+        setIsLoading(false);
+      }
+    };
 
     fetchCategory();
   }, [id, router]);

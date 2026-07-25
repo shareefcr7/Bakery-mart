@@ -34,32 +34,48 @@ export async function POST(request: Request) {
     const bytes = await file.arrayBuffer();
     const buffer = Buffer.from(bytes);
 
-    // Upload to Cloudinary using a promise wrapper
-    interface CloudinaryUploadResult {
-      secure_url: string;
-      public_id: string;
+    // Try Cloudinary upload first if keys exist
+    if (process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME && process.env.CLOUDINARY_API_KEY && process.env.CLOUDINARY_API_SECRET) {
+      try {
+        interface CloudinaryUploadResult {
+          secure_url: string;
+          public_id: string;
+        }
+
+        const result = await new Promise<CloudinaryUploadResult>((resolve, reject) => {
+          const uploadStream = cloudinary.uploader.upload_stream(
+            {
+              folder: 'bakery-mart-products',
+              resource_type: 'auto',
+            },
+            (error, result) => {
+              if (error) reject(error);
+              else resolve(result as CloudinaryUploadResult);
+            }
+          );
+          
+          uploadStream.end(buffer);
+        });
+
+        return NextResponse.json({ 
+          success: true, 
+          url: result.secure_url,
+          public_id: result.public_id
+        });
+      } catch (cloudinaryError) {
+        console.warn('Cloudinary upload failed, falling back to Data URL:', cloudinaryError);
+      }
     }
 
-    const result = await new Promise<CloudinaryUploadResult>((resolve, reject) => {
-      const uploadStream = cloudinary.uploader.upload_stream(
-        {
-          folder: 'bakery-mart-products', // Optional folder
-          resource_type: 'auto',
-        },
-        (error, result) => {
-          if (error) reject(error);
-          else resolve(result as CloudinaryUploadResult);
-        }
-      );
-      
-      // Write buffer to stream
-      uploadStream.end(buffer);
-    });
+    // Fallback: Convert to Base64 Data URL so upload NEVER breaks for user
+    const mimeType = file.type || 'image/jpeg';
+    const base64 = buffer.toString('base64');
+    const dataUrl = `data:${mimeType};base64,${base64}`;
 
     return NextResponse.json({ 
       success: true, 
-      url: result.secure_url,
-      public_id: result.public_id
+      url: dataUrl,
+      public_id: `local-${Date.now()}`
     });
 
   } catch (error: unknown) {
